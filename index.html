@@ -1,0 +1,5299 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Chielle Store</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --color-1:#EFD5DF;
+  --color-2:#FFE4F1;
+  --color-3:#FFF2F9;
+  --color-4:#FEDEE3;
+  --color-5:#FEF6F3;
+
+  --bg:var(--color-5);
+  --white:#fff;
+  --text:#6a505b;
+  --muted:#a58b96;
+  --line:var(--color-1);
+  --soft:var(--color-3);
+  --pink:var(--color-1);
+  --pink2:var(--color-2);
+  --red:#c9849d;
+  --shadow:0 8px 25px rgba(120,85,100,.08);
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:"Kanit",sans-serif;
+  background:var(--color-5);
+  color:var(--text);
+  min-height:100vh;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+img{display:block}
+.hide{display:none!important}
+
+.app{
+  width:100%;
+  min-height:100vh;
+  background:var(--bg);
+  padding-bottom:92px;
+}
+
+/* ===== 7 THEME COLORS ===== */
+body[data-theme="pink"]{
+  --color-1:#EFD5DF;
+  --color-2:#FFE4F1;
+  --color-3:#FFF2F9;
+  --color-4:#FEDEE3;
+  --color-5:#FEF6F3;
+
+  --bg:var(--color-5);
+  --text:#6a505b;
+  --muted:#a58b96;
+  --line:var(--color-1);
+  --soft:var(--color-3);
+  --pink:var(--color-1);
+  --pink2:var(--color-2);
+  --red:#c9849d;
+}
+body[data-theme="lavender"]{
+  --bg:#fcf9ff;--text:#574d68;--muted:#968ca7;--line:#e8def2;
+  --soft:#f8f3ff;--pink:#bca9e4;--pink2:#f3efff;--red:#a985d4;
+}
+body[data-theme="blue"]{
+  --bg:#f8fcff;--text:#465c69;--muted:#879ba6;--line:#dceaf1;
+  --soft:#f1f9ff;--pink:#9ccde7;--pink2:#eaf6ff;--red:#72b2d4;
+}
+body[data-theme="mint"]{
+  --bg:#f8fffc;--text:#465f56;--muted:#879b93;--line:#d8ebe3;
+  --soft:#effbf6;--pink:#9dd7c1;--pink2:#e9f9f2;--red:#72b99e;
+}
+body[data-theme="peach"]{
+  --bg:#fffaf7;--text:#684f44;--muted:#a08c82;--line:#f0dfd7;
+  --soft:#fff5ef;--pink:#efb18f;--pink2:#fff0e7;--red:#e38e67;
+}
+body[data-theme="butter"]{
+  --bg:#fffdf6;--text:#665d43;--muted:#9b9279;--line:#eee5c8;
+  --soft:#fff9e9;--pink:#e6ca78;--pink2:#fff6d7;--red:#d3ae49;
+}
+body[data-theme="rose"]{
+  --bg:#fffafa;--text:#644c50;--muted:#9e898d;--line:#ecdadd;
+  --soft:#fff4f5;--pink:#dda2a9;--pink2:#fff0f1;--red:#c97882;
+}
+
+/* ===== TOP STORE BAR ===== */
+.storebar{
+  width:100%;
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 14px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+.brand-logo{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:19px;
+  box-shadow:0 6px 14px rgba(211,126,155,.16);
+  flex:0 0 auto;
+}
+.brand-copy{min-width:0}
+.brand-name{
+  font-size:14px;
+  font-weight:600;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.brand-sub{
+  font-size:8px;
+  color:var(--red);
+  font-weight:500;
+  margin-top:2px;
+  white-space:nowrap;
+}
+.store-actions{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex:0 0 auto;
+}
+.top-icon{
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--soft);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  position:relative;
+  font-size:14px;
+}
+.top-icon.pay{
+  background:var(--pink);
+  color:#fff;
+  border-color:var(--pink);
+}
+.top-icon.cart{
+  background:var(--pink);
+  color:#fff;
+  border-color:var(--pink);
+  width:74px;
+}
+.top-icon.admin{
+  background:var(--pink2);
+  color:var(--red);
+}
+.cart-mini{
+  position:absolute;
+  top:4px;
+  right:5px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#ffe7a9;
+  color:#8a6c31;
+  font-size:8px;
+  font-weight:600;
+}
+
+/* ===== BANNER / GIF HEADER ===== */
+.hero-wrap{
+  padding:10px 12px 0;
+  background:#fff;
+}
+.gif-banner{
+  height:180px;
+  width:100%;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(circle at 18% 20%,#fff 0 10%,transparent 11%),
+    radial-gradient(circle at 80% 28%,rgba(255,255,255,.55) 0 8%,transparent 9%),
+    linear-gradient(135deg,var(--pink),var(--pink2) 70%);
+  border:1px solid var(--line);
+}
+.gif-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.banner-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+.banner-fallback strong{
+  font-size:25px;
+  text-shadow:0 2px 8px rgba(60,20,20,.15);
+}
+.banner-fallback small{
+  font-size:10px;
+  background:rgba(255,255,255,.85);
+  color:var(--red);
+  border-radius:999px;
+  padding:4px 10px;
+}
+.gif-banner:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:35px;
+  background:linear-gradient(to top,rgba(0,0,0,.08),transparent);
+  pointer-events:none;
+}
+
+/* ===== PROFILE OVERLAP ===== */
+.profile-card{
+  background:#fff;
+  padding:0 14px 13px;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+}
+.profile-avatar{
+  width:86px;
+  height:86px;
+  margin:-43px auto 0;
+  position:relative;
+  z-index:5;
+  border-radius:50%;
+  border:5px solid #fff;
+  background:var(--pink2);
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(46,46,46,.13);
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  font-size:28px;
+}
+.profile-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.profile-name{
+  font-size:18px;
+  font-weight:600;
+  margin-top:7px;
+}
+.profile-bio{
+  color:var(--muted);
+  font-size:10px;
+  margin:4px auto 0;
+  max-width:520px;
+  line-height:1.45;
+  white-space:pre-line;
+}
+
+/* ===== NEW: SYSTEM STRIP ===== */
+.system-strip{
+  margin:10px 12px 0;
+  padding:10px 11px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 8px 22px rgba(137,91,108,.07);
+}
+.system-check{
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  border-radius:9px;
+  background:#ed526f;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  font-weight:600;
+}
+.system-copy{
+  flex:1;
+  min-width:0;
+}
+.system-copy b{
+  display:block;
+  font-size:10px;
+}
+.system-copy span{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  margin-top:1px;
+}
+.system-stats{
+  text-align:right;
+  flex:0 0 auto;
+}
+.system-stats b{
+  display:block;
+  color:var(--red);
+  font-size:11px;
+}
+.system-stats span{
+  display:block;
+  color:var(--muted);
+  font-size:7px;
+}
+
+/* ===== MAIN SEARCH / CATEGORY PANEL ===== */
+.main-panel{padding:12px}
+.control-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:12px;
+  box-shadow:0 3px 12px rgba(20,30,45,.04);
+}
+.search-label{
+  font-size:10px;
+  color:var(--muted);
+  margin-bottom:5px;
+}
+.search-box{
+  height:44px;
+  border:1px solid var(--line);
+  background:var(--color-5);
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 11px;
+}
+.search-box span{
+  color:var(--muted);
+  font-size:16px;
+}
+.search-box input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  font-size:11px;
+}
+
+/* ===== 4 TOP BOXES ===== */
+.category-top{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.category-box{
+  min-width:0;
+  min-height:86px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  padding:7px 3px;
+  color:var(--text);
+  transition:.18s ease;
+  box-shadow:none;
+}
+.category-box:hover{
+  transform:translateY(-1px);
+}
+.category-box .ico{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:#fff;
+  border:1.5px solid var(--color-1);
+  display:grid;
+  place-items:center;
+  color:#d987a4;
+  box-shadow:
+    0 8px 18px rgba(157,105,124,.14),
+    inset 0 0 0 1px rgba(255,255,255,.82);
+}
+.category-box .ico svg{
+  width:25px;
+  height:25px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.category-box .ico .fallback-icon{
+  font-size:18px;
+  line-height:1;
+}
+.category-box .txt{
+  font-size:10px;
+  font-weight:500;
+  line-height:1.15;
+  white-space:nowrap;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.category-box.active{
+  color:var(--red);
+}
+.category-box.active .ico{
+  background:var(--pink2);
+  border-color:var(--pink);
+  color:var(--red);
+  box-shadow:
+    0 6px 14px rgba(157,105,124,.13),
+    inset 0 0 0 1px rgba(255,255,255,.8);
+}
+
+/* ===== LOWER BOXES ===== */
+.category-bottom{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.category-wide{
+  height:40px;
+  border:1.5px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+  color:var(--text);
+  font-size:10px;
+  font-weight:500;
+  transition:.18s;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  padding:0 8px;
+  box-shadow:0 5px 12px rgba(137,91,108,.07);
+}
+.category-wide.active{
+  background:var(--pink);
+  color:#fff;
+  border-color:var(--pink);
+}
+.sort-row{
+  margin-top:9px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.sort-select{
+  width:100%;
+  height:39px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--color-5);
+  padding:0 10px;
+  outline:none;
+  color:var(--text);
+  font-size:10px;
+}
+
+/* ===== OTHER PAGE ===== */
+.other-page{
+  padding:12px 12px 26px;
+}
+.other-head{margin-bottom:10px}
+.other-head h2{font-size:16px}
+.other-head p{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:9px;
+}
+.other-category-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:6px;
+  width:100%;
+}
+.other-category-card{
+  min-width:0;
+  min-height:78px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:6px 3px;
+  box-shadow:none;
+  transition:.18s ease;
+}
+.other-category-card:active{transform:scale(.98)}
+.other-category-card.active{
+  color:var(--red);
+}
+.other-category-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:#fff;
+  border:1.5px solid var(--color-1);
+  display:grid;
+  place-items:center;
+  color:#d987a4;
+  box-shadow:
+    0 8px 18px rgba(157,105,124,.14),
+    inset 0 0 0 1px rgba(255,255,255,.82);
+}
+.other-category-icon svg{
+  width:22px;
+  height:22px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.other-category-card span:last-child{
+  width:100%;
+  font-size:9px;
+  font-weight:500;
+  line-height:1.15;
+  text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.other-work-wrap{margin-top:14px}
+.other-work-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:10px;
+  margin-bottom:9px;
+}
+.other-work-head h3{font-size:15px}
+.other-work-head p{
+  margin-top:2px;
+  color:var(--muted);
+  font-size:8px;
+}
+.other-work-count{
+  color:var(--muted);
+  font-size:8px;
+}
+.other-products{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+@media (min-width:680px){
+  .other-page{padding-left:24px;padding-right:24px}
+  .other-products{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (min-width:1050px){
+  .other-page{padding-left:5vw;padding-right:5vw}
+  .other-products{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+/* ===== WORK LIST ===== */
+.work-section{padding:2px 12px 20px}
+.work-title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:10px;
+  margin:11px 0 9px;
+}
+.work-title-left h2{
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.work-title-left h2:before{
+  content:"▦";
+  color:var(--red);
+  font-size:18px;
+}
+.work-title-left p{
+  font-size:9px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.work-count{
+  font-size:9px;
+  color:var(--muted);
+}
+.select-tools{
+  display:flex;
+  gap:7px;
+  margin-bottom:10px;
+}
+.tool-chip{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:999px;
+  height:32px;
+  padding:0 11px;
+  font-size:9px;
+  color:var(--muted);
+}
+.tool-chip.primary{
+  color:var(--red);
+  background:var(--soft);
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.product-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(20,30,45,.05);
+  position:relative;
+  cursor:pointer;
+  transition:.18s ease;
+}
+.product-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 9px 22px rgba(137,91,108,.11);
+}
+.product-card:active{
+  transform:scale(.985);
+}
+.product-img{
+  aspect-ratio:1.12/1;
+  background:var(--pink2);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  color:var(--red);
+  font-size:30px;
+}
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.red-check{
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  border:2px solid #fff;
+  background:#fff;
+  color:#d9bdc7;
+  box-shadow:0 3px 10px rgba(0,0,0,.11);
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  font-weight:600;
+  transition:.17s ease;
+}
+.red-check.selected{
+  background:#eb526f;
+  color:#fff;
+  transform:scale(1.06);
+}
+.product-info{padding:9px 10px 10px}
+.product-title{
+  font-size:11px;
+  font-weight:500;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.product-desc{
+  font-size:8.5px;
+  line-height:1.45;
+  color:var(--muted);
+  min-height:25px;
+  margin-top:2px;
+}
+.product-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-top:7px;
+}
+.product-price{
+  font-size:12px;
+  color:var(--red);
+  font-weight:600;
+}
+.product-category{
+  font-size:8px;
+  background:var(--pink2);
+  color:var(--red);
+  padding:3px 6px;
+  border-radius:999px;
+}
+.empty{
+  grid-column:1/-1;
+  padding:32px 12px;
+  text-align:center;
+  border:1px dashed var(--line);
+  border-radius:14px;
+  background:#fff;
+  color:var(--muted);
+  font-size:10px;
+}
+
+/* ===== NEW: QUEUE PAGE ===== */
+.queue-page{
+  padding:12px 12px 25px;
+}
+.queue-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.queue-head h2{font-size:16px}
+.queue-back{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--text);
+  border-radius:10px;
+  height:34px;
+  padding:0 10px;
+  font-size:9px;
+}
+
+.queue-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin-bottom:10px;
+}
+.queue-stat{
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#fff;
+  padding:10px 6px;
+  text-align:center;
+  box-shadow:0 3px 10px rgba(20,30,45,.03);
+}
+.queue-stat b{
+  display:block;
+  font-size:16px;
+  line-height:1;
+  margin-bottom:4px;
+}
+.queue-stat span{
+  display:block;
+  font-size:8px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.queue-stat.waiting b{color:#c49a39}
+.queue-stat.working b{color:#709ac1}
+.queue-stat.done b{color:#72a98b}
+
+.queue-search{
+  width:100%;
+  height:42px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  padding:0 11px;
+  outline:none;
+  color:var(--text);
+  font-size:10px;
+  margin-bottom:10px;
+}
+.queue-list{
+  display:grid;
+  gap:9px;
+}
+.queue-item{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  padding:10px;
+  display:grid;
+  grid-template-columns:40px 1fr auto;
+  gap:9px;
+  align-items:center;
+}
+.queue-no{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  background:var(--pink2);
+  color:var(--red);
+  display:grid;
+  place-items:center;
+  font-size:9px;
+  font-weight:600;
+}
+.queue-info b{
+  display:block;
+  font-size:10px;
+}
+.queue-info p{
+  color:var(--muted);
+  font-size:8px;
+  margin-top:2px;
+}
+.queue-status{
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:7px;
+  white-space:nowrap;
+}
+.queue-status.waiting{background:#fff8dd;color:#9c7a25}
+.queue-status.working{background:#eef7ff;color:#6088b0}
+.queue-status.review{background:#faf0ff;color:#9e6aaa}
+.queue-status.done{background:#eef9f3;color:#5e9a7d}
+
+/* ===== MUSIC ===== */
+.music-float{
+  position:fixed;
+  right:14px;
+  bottom:80px;
+  z-index:65;
+}
+.music-btn{
+  width:45px;
+  height:45px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:#fff;
+  color:var(--red);
+  box-shadow:var(--shadow);
+  display:grid;
+  place-items:center;
+  font-size:15px;
+}
+.music-btn.playing{
+  background:var(--pink);
+  color:#fff;
+}
+
+/* ===== CART STICKY ===== */
+.cart-dock{
+  position:fixed;
+  z-index:60;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(to top,var(--bg) 72%,transparent);
+}
+.cart-main{
+  width:min(700px,100%);
+  margin:auto;
+  min-height:58px;
+  border:0;
+  border-radius:18px;
+  background:var(--pink);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:0 15px;
+  box-shadow:0 12px 28px rgba(204,120,149,.22);
+}
+.cart-main-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-align:left;
+}
+.cart-round{
+  width:35px;
+  height:35px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.24);
+  color:#fff;
+  font-size:15px;
+}
+.cart-label{font-size:11px}
+.cart-sub{font-size:8px;color:#fff;margin-top:1px;opacity:.85}
+.cart-total{
+  font-size:14px;
+  font-weight:600;
+}
+
+/* ===== MODALS ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(91,57,70,.34);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  backdrop-filter:blur(3px);
+}
+.modal.show{display:flex}
+.sheet{
+  width:100%;
+  max-width:720px;
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:24px 24px 0 0;
+  padding:16px;
+  animation:sheetUp .22s ease;
+}
+@keyframes sheetUp{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}
+.sheet-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:13px;
+}
+.sheet-head h3{font-size:16px}
+.close{
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:var(--pink2);
+  color:var(--text);
+  font-size:18px;
+}
+
+
+/* ===== WORK DETAIL POPUP ===== */
+.work-detail-shell{
+  overflow:hidden;
+}
+.work-detail-image{
+  width:100%;
+  aspect-ratio:16/10;
+  border-radius:17px;
+  overflow:hidden;
+  background:var(--pink2);
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  font-size:34px;
+}
+.work-detail-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.work-detail-body{
+  padding:13px 2px 2px;
+}
+.work-detail-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.work-detail-name{
+  font-size:17px;
+  font-weight:600;
+  line-height:1.3;
+}
+.work-detail-price{
+  flex:0 0 auto;
+  color:var(--red);
+  font-size:16px;
+  font-weight:600;
+}
+.work-detail-category{
+  display:inline-flex;
+  align-items:center;
+  margin-top:6px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:var(--pink2);
+  color:var(--red);
+  font-size:8px;
+}
+.work-detail-desc{
+  margin-top:11px;
+  padding:11px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:var(--soft);
+  color:var(--text);
+  font-size:10px;
+  line-height:1.65;
+  white-space:pre-line;
+}
+.work-detail-link{
+  width:100%;
+  min-height:46px;
+  margin-top:11px;
+  border:0;
+  border-radius:13px;
+  background:var(--pink);
+  color:#fff;
+  font-size:10px;
+  box-shadow:0 7px 16px rgba(137,91,108,.12);
+}
+.work-detail-link.disabled{
+  opacity:.48;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+/* ===== CART CONTENT ===== */
+.cart-item{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+}
+.cart-thumb{
+  width:56px;
+  height:56px;
+  border-radius:11px;
+  overflow:hidden;
+  background:var(--pink2);
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  flex:0 0 auto;
+}
+.cart-thumb img{width:100%;height:100%;object-fit:cover}
+.cart-info{flex:1}
+.cart-info b{display:block;font-size:11px;font-weight:500}
+.cart-info span{font-size:9px;color:var(--red)}
+.remove{
+  width:30px;
+  height:30px;
+  border:0;
+  border-radius:9px;
+  background:var(--color-2);
+  color:#c86f8d;
+}
+.cart-summary{
+  margin-top:12px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  font-weight:600;
+}
+.big-btn{
+  width:100%;
+  height:45px;
+  margin-top:10px;
+  border:0;
+  border-radius:13px;
+  background:var(--pink);
+  color:#fff;
+  font-size:11px;
+}
+
+/* ===== PAYMENT ===== */
+.payment-shell{
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:19px;
+  padding:13px;
+}
+.pay-header-card{
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  color:#fff;
+  padding:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.pay-header-card small{font-size:8px;opacity:.85}
+.pay-header-card strong{display:block;font-size:23px;margin-top:1px}
+.pay-shop{font-size:10px;text-align:right}
+.payment-order{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:10px;
+  margin-top:10px;
+}
+.payment-order-title{
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.pay-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:9px;
+  padding:3px 0;
+}
+.qr-wrap{
+  width:210px;
+  max-width:78%;
+  aspect-ratio:1/1;
+  margin:12px auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:8px;
+  display:grid;
+  place-items:center;
+  color:var(--muted);
+  font-size:10px;
+  overflow:hidden;
+}
+.qr-wrap img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+.bank-box{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:12px;
+}
+.bank-box small{font-size:8px;color:var(--muted)}
+.bank-name{font-size:12px;font-weight:600;margin-top:2px}
+.account-name{font-size:9px;color:var(--muted);margin-top:2px}
+.account-copy{
+  display:flex;
+  gap:7px;
+  margin-top:9px;
+}
+.account-number{
+  flex:1;
+  height:38px;
+  display:flex;
+  align-items:center;
+  padding:0 10px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:11px;
+}
+.copy-btn{
+  height:38px;
+  border:0;
+  border-radius:10px;
+  background:var(--pink);
+  color:#fff;
+  padding:0 12px;
+  font-size:9px;
+}
+.pay-note{
+  margin-top:10px;
+  font-size:8.5px;
+  color:var(--muted);
+  line-height:1.55;
+  white-space:pre-line;
+}
+
+/* ===== ADMIN ===== */
+.form-group{margin-bottom:10px}
+.form-group label{
+  display:block;
+  font-size:9px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+  padding:9px 10px;
+  outline:none;
+  font-size:10px;
+  color:var(--text);
+}
+
+.form-group textarea{min-height:70px;resize:vertical}
+
+.gallery-upload{
+  margin-top:7px;
+  padding:9px;
+  border:1px dashed var(--line);
+  border-radius:12px;
+  background:#fff;
+}
+.gallery-upload-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.gallery-pick-btn,
+.gallery-clear-btn{
+  min-height:36px;
+  border-radius:10px;
+  padding:0 11px;
+  font-size:9px;
+}
+.gallery-pick-btn{
+  border:0;
+  background:var(--pink);
+  color:#fff;
+}
+.gallery-clear-btn{
+  border:1px solid var(--line);
+  background:var(--soft);
+  color:var(--muted);
+}
+.gallery-preview{
+  margin-top:8px;
+  width:100%;
+  max-height:180px;
+  object-fit:contain;
+  border-radius:11px;
+  border:1px solid var(--line);
+  background:var(--soft);
+}
+.gallery-hint{
+  margin-top:6px;
+  font-size:7.5px;
+  line-height:1.45;
+  color:var(--muted);
+}
+
+.admin-note{
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--soft);
+  padding:9px 10px;
+  font-size:9px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.admin-tabs{
+  display:flex;
+  gap:6px;
+  overflow:auto;
+  margin-bottom:10px;
+  scrollbar-width:none;
+}
+.admin-tabs::-webkit-scrollbar{display:none}
+.admin-tab{
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  padding:7px 11px;
+  font-size:9px;
+  white-space:nowrap;
+  color:var(--text);
+}
+.admin-tab.active{
+  background:var(--pink);
+  color:#fff;
+  border-color:var(--pink);
+}
+.admin-card{
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:11px;
+  margin-bottom:10px;
+}
+.admin-card h4{font-size:11px;margin-bottom:9px}
+.admin-work{
+  display:flex;
+  gap:7px;
+  align-items:center;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+}
+.admin-work:last-child{border-bottom:0}
+.admin-work-info{flex:1;min-width:0}
+.admin-work-info b{
+  display:block;
+  font-size:10px;
+  font-weight:500;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.admin-work-info small{font-size:8px;color:var(--muted)}
+.admin-actions{display:flex;gap:4px}
+.mini{
+  border:0;
+  border-radius:8px;
+  padding:5px 7px;
+  font-size:8px;
+}
+.edit{background:var(--color-2);color:#bd7891}
+.danger{background:var(--color-4);color:#ca6e8a}
+.secondary{
+  width:100%;
+  height:40px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+  color:var(--text);
+  margin-top:7px;
+  font-size:10px;
+}
+.theme-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+.theme-choice{
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fff;
+  padding:7px 4px;
+  font-size:8px;
+  color:var(--text);
+}
+.theme-choice.selected{
+  box-shadow:0 0 0 2px var(--pink);
+}
+.theme-dot{
+  width:24px;
+  height:24px;
+  margin:0 auto 4px;
+  border-radius:50%;
+  border:2px solid #fff;
+  box-shadow:0 0 0 1px var(--line);
+}
+
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:70;
+  height:72px;
+  padding:7px 10px calc(7px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+}
+.bottom-nav-btn{
+  width:100%;
+  min-width:0;
+  max-width:none;
+  border:0;
+  border-radius:13px;
+  background:transparent;
+  color:var(--muted);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  min-width:0;
+  font-size:8px;
+  white-space:nowrap;
+  overflow:hidden;
+  transition:.18s ease;
+}
+.bottom-nav-btn .nav-icon{
+  width:29px;
+  height:29px;
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+}
+.bottom-nav-btn.active{
+  color:var(--red);
+  font-weight:500;
+}
+.bottom-nav-btn.active .nav-icon{
+  background:var(--pink2);
+  color:var(--red);
+}
+.bottom-nav-btn:active{
+  transform:scale(.97);
+}
+
+/* ===== GROUP / CONTACT PAGES ===== */
+.simple-page{
+  padding:12px 12px 26px;
+}
+.simple-page-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+}
+.simple-page-head h2{
+  font-size:16px;
+}
+.simple-page-card{
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#fff;
+  padding:13px;
+  box-shadow:0 3px 12px rgba(20,30,45,.04);
+}
+.simple-page-card + .simple-page-card{
+  margin-top:10px;
+}
+.simple-page-card h3{
+  font-size:12px;
+}
+.simple-page-card p{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.55;
+}
+.contact-links{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.contact-link{
+  min-height:45px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--soft);
+  color:var(--text);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:0 11px;
+  font-size:10px;
+}
+.contact-link.disabled{
+  opacity:.48;
+  pointer-events:none;
+}
+.contact-link span:last-child{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* old cart dock is no longer used because the bottom navbar replaces it */
+.cart-dock{display:none!important}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:420px){
+  .bottom-nav{
+    padding-left:4px;
+    padding-right:4px;
+  }
+  .bottom-nav-btn{
+    font-size:7.5px;
+    gap:2px;
+  }
+  .bottom-nav-btn .nav-icon{
+    width:27px;
+    height:27px;
+  }
+  .other-category-grid{
+    gap:5px;
+  }
+  .other-category-card{
+    min-height:80px;
+    padding-left:3px;
+    padding-right:3px;
+  }
+  .other-category-icon{
+    width:40px;
+    height:40px;
+  }
+}
+
+@media (max-width:359px){
+  .category-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .category-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .queue-fixed{grid-column:1/-1}
+}
+@media (min-width:680px){
+  .hero-wrap,.profile-card,.main-panel,.work-section,.queue-page{
+    padding-left:24px;
+    padding-right:24px;
+  }
+  .system-strip{margin-left:24px;margin-right:24px}
+  .gif-banner{height:260px}
+  .products{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .profile-avatar{width:104px;height:104px;margin-top:-52px}
+}
+@media (min-width:1050px){
+  .hero-wrap,.profile-card,.main-panel,.work-section,.queue-page{
+    padding-left:5vw;
+    padding-right:5vw;
+  }
+  .system-strip{margin-left:5vw;margin-right:5vw}
+  .gif-banner{height:320px}
+  .products{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+</style>
+</head>
+
+<body data-theme="pink">
+<div class="app">
+
+  <!-- TOP BAR: SHOP NAME / QR / CART / ADMIN -->
+  <header class="storebar">
+    <div class="brand">
+      <div class="brand-logo" id="brandLogo">✿</div>
+      <div class="brand-copy">
+        <div class="brand-name" id="brandName">Chielle Store</div>
+        <div class="brand-sub">HAPPY LITTLE STORE ♡</div>
+      </div>
+    </div>
+
+    <div class="store-actions">
+      <button class="top-icon pay" onclick="openPayment()" aria-label="ชำระเงิน QR">▦</button>
+
+      <button class="top-icon cart" onclick="openCart()" aria-label="ตะกร้า">
+        🛍
+        <span class="cart-mini" id="topCartCount">0</span>
+      </button>
+
+      <button class="top-icon admin" onclick="openAdmin()" aria-label="Admin">♙</button>
+    </div>
+  </header>
+
+  <!-- GIF HEADER -->
+  <section class="hero-wrap">
+    <div class="gif-banner">
+      <div class="banner-fallback" id="bannerFallback">
+        <strong>Chielle Store</strong>
+        <small>OPEN ♡ HAVE A NICE DAY</small>
+      </div>
+
+      <img
+        id="headerGif"
+        src="https://i.postimg.cc/NF01hhFJ/𝐋𝐎𝐕𝐄-𝐎𝐍-𝐓𝐇𝐄-𝐁𝐑𝐀𝐈𝐍-𝘣𝘭𝘢𝘤𝘬-𝘳𝘦𝘢𝘥𝘦𝘳-𝐀𝐒𝐋-𝐏𝐔𝐌𝐏𝐊𝐈𝐍-𝐏𝐀𝐓𝐂𝐇-𝐇𝐄𝐀𝐃𝐂𝐀𝐍𝐎𝐍𝐒.gif"
+        class="hide"
+        alt="GIF header"
+      >
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="profile-card">
+    <div class="profile-avatar">
+      <span id="profileFallback">♡</span>
+
+      <img
+        id="profileImage"
+        src="https://i.postimg.cc/X7kpf1vY/Surprised-Luffy-Reaction-GIF-Iconic-One-Piece-Moment-Wallpaper-Engine-Space.gif"
+        class="hide"
+        alt="profile"
+      >
+    </div>
+
+    <div class="profile-name" id="profileName">Chielle Store</div>
+    <div class="profile-bio" id="profileBio">welcome to my little shop ♡</div>
+  </section>
+
+  <!-- NEW SYSTEM STRIP -->
+  <section class="system-strip" id="systemStrip">
+    <div class="system-check">✓</div>
+
+    <div class="system-copy">
+      <b>ระบบเลือกงาน</b>
+      <span>ติ๊ก ✓ สีแดงที่งาน → งานจะเข้าไปในตะกร้าอัตโนมัติ</span>
+    </div>
+
+    <div class="system-stats">
+      <b><span id="systemCartCount">0</span> ชิ้น</b>
+      <span id="systemCartTotal">฿0</span>
+    </div>
+  </section>
+
+  <!-- NORMAL SHOP CONTENT -->
+  <div id="shopContent">
+
+    <!-- SEARCH + CATEGORIES -->
+    <main class="main-panel" id="categoryPanel">
+      <div class="control-card">
+
+        <div class="search-label">ค้นหาสินค้า</div>
+
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" placeholder="เช่น แต่งบล็อค, ตูน, เอฟ..." oninput="renderWorks()">
+        </div>
+
+        <!-- Dynamic top category boxes -->
+        <div class="category-top" id="categoryTop"></div>
+
+      </div>
+    </main>
+
+    <!-- WORKS -->
+    <section class="work-section" id="worksSection">
+      <div class="work-title-row">
+        <div class="work-title-left">
+          <h2 id="workTitle">รายการพร้อมขาย</h2>
+          <p id="workSubtitle">แสดง 0 รายการ</p>
+        </div>
+
+        <span class="work-count" id="workCount">0 รายการ</span>
+      </div>
+
+      <div class="select-tools">
+        <button class="tool-chip primary" onclick="selectAllVisible()">☑ เลือกทั้งหมด</button>
+        <button class="tool-chip" onclick="clearCart()">↻ ล้างการเลือก</button>
+      </div>
+
+      <div class="products" id="products"></div>
+    </section>
+
+  </div>
+
+  <!-- OTHER PAGE -->
+  <section class="other-page hide" id="otherPage">
+
+    <div class="other-head">
+      <h2>Other</h2>
+      <p>ตัวอย่างงาน / ปล่อยเอฟ / เช็คคิว</p>
+    </div>
+
+    <div class="other-category-grid" id="otherCategoryGrid"></div>
+
+    <div class="other-work-wrap" id="otherWorkWrap">
+      <div class="other-work-head">
+        <div>
+          <h3 id="otherWorkTitle">ตัวอย่างงาน</h3>
+          <p>กดงานเพื่อดูรายละเอียด</p>
+        </div>
+        <span class="other-work-count" id="otherWorkCount">0 รายการ</span>
+      </div>
+
+      <div class="other-products" id="otherProducts"></div>
+    </div>
+
+  </section>
+
+  <!-- NEW: CHECK QUEUE PAGE -->
+  <section class="queue-page hide" id="queuePage">
+    <div class="queue-head">
+      <h2>เช็คคิว</h2>
+      <button class="queue-back" onclick="backToShop()">← กลับหน้าร้าน</button>
+    </div>
+
+    <div class="queue-stats">
+      <div class="queue-stat waiting">
+        <b id="queueWaitingCount">0</b>
+        <span>รอคิว</span>
+      </div>
+
+      <div class="queue-stat working">
+        <b id="queueWorkingCount">0</b>
+        <span>กำลังทำ</span>
+      </div>
+
+      <div class="queue-stat done">
+        <b id="queueDoneCount">0</b>
+        <span>เสร็จแล้ว</span>
+      </div>
+    </div>
+
+    <input
+      class="queue-search"
+      id="queueSearch"
+      placeholder="ค้นหาชื่อลูกค้า / งาน / ติดต่อ..."
+      oninput="renderQueues()"
+    >
+
+    <div class="queue-list" id="queueList"></div>
+  </section>
+<!-- NEW: CONTACT PAGE -->
+  <section class="simple-page hide" id="contactPage">
+    <div class="simple-page-head">
+      <h2>Contact</h2>
+    </div>
+
+    <div class="simple-page-card">
+      <h3>ช่องทางติดต่อ</h3>
+      <p>เลือกช่องทางที่สะดวกเพื่อติดต่อร้าน</p>
+
+      <div class="contact-links">
+        <a class="contact-link disabled" id="lineContact" href="#" target="_blank" rel="noopener">
+          <span>LINE</span><span>›</span>
+        </a>
+
+        <a class="contact-link disabled" id="instagramContact" href="#" target="_blank" rel="noopener">
+          <span>Instagram</span><span>›</span>
+        </a>
+
+        <a class="contact-link disabled" id="facebookContact" href="#" target="_blank" rel="noopener">
+          <span>Facebook</span><span>›</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- MUSIC -->
+<div class="music-float">
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♫</button>
+  <audio id="musicAudio" preload="auto" autoplay loop playsinline></audio>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" aria-label="Bottom navigation">
+
+  <button
+    class="bottom-nav-btn active"
+    id="navMain"
+    onclick="showMainPage()"
+  >
+    <span class="nav-icon">⌂</span>
+    <span>Main</span>
+  </button>
+
+  <button
+    class="bottom-nav-btn"
+    id="navOther"
+    onclick="showOtherPage()"
+  >
+    <span class="nav-icon">✦</span>
+    <span>Other</span>
+  </button>
+
+  <button
+    class="bottom-nav-btn"
+    id="navPayment"
+    onclick="openPaymentFromNav()"
+  >
+    <span class="nav-icon">▦</span>
+    <span>Payment</span>
+  </button>
+<button
+    class="bottom-nav-btn"
+    id="navContact"
+    onclick="showContactPage()"
+  >
+    <span class="nav-icon">♡</span>
+    <span>Contact</span>
+  </button>
+
+</nav>
+
+<!-- WORK DETAIL -->
+<div class="modal" id="workDetailModal">
+  <div class="sheet">
+    <div class="sheet-head">
+      <h3>รายละเอียดงาน</h3>
+      <button class="close" onclick="closeModal('workDetailModal')">×</button>
+    </div>
+
+    <div class="work-detail-shell">
+
+      <div class="work-detail-image" id="workDetailImage">
+        ♡
+      </div>
+
+      <div class="work-detail-body">
+
+        <div class="work-detail-top">
+          <div class="work-detail-name" id="workDetailName">ชื่องาน</div>
+          <div class="work-detail-price" id="workDetailPrice">฿0</div>
+        </div>
+
+        <div class="work-detail-category" id="workDetailCategory">หมวดหมู่</div>
+
+        <div class="work-detail-desc" id="workDetailDesc">
+          รายละเอียดงาน
+        </div>
+
+        <button
+          class="work-detail-link"
+          id="workDetailLinkBtn"
+          onclick="goToWorkLink()"
+        >
+          ไปที่ลิงก์งาน →
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="modal" id="cartModal">
+  <div class="sheet">
+    <div class="sheet-head">
+      <h3>ตะกร้าของฉัน</h3>
+      <button class="close" onclick="closeModal('cartModal')">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-summary">
+      <span>รวมทั้งหมด</span>
+      <span id="cartTotal">฿0</span>
+    </div>
+
+    <button class="big-btn" onclick="openPaymentFromCart()">ไปหน้าชำระเงิน</button>
+  </div>
+</div>
+
+<!-- PAYMENT -->
+<div class="modal" id="paymentModal">
+  <div class="sheet">
+    <div class="sheet-head">
+      <h3>ชำระเงิน</h3>
+      <button class="close" onclick="closeModal('paymentModal')">×</button>
+    </div>
+
+    <div class="payment-shell">
+
+      <div class="pay-header-card">
+        <div>
+          <small>ยอดที่ต้องชำระ</small>
+          <strong id="paymentTotal">฿0</strong>
+        </div>
+
+        <div class="pay-shop">
+          <small>ร้าน</small><br>
+          <span id="paymentShopName">Chielle Store</span>
+        </div>
+      </div>
+
+      <div class="payment-order">
+        <div class="payment-order-title">
+          <span>รายการที่เลือก</span>
+          <span id="paymentItemCount">0 รายการ</span>
+        </div>
+
+        <div id="paymentOrderList"></div>
+      </div>
+
+      <div class="qr-wrap">
+        <span id="qrFallback">ยังไม่ได้ตั้งค่า QR</span>
+        <img id="qrImage" class="hide" alt="QR Payment">
+      </div>
+
+      <div class="bank-box">
+        <small>โอนผ่าน</small>
+        <div class="bank-name" id="bankName">กรุณาตั้งค่าใน Admin</div>
+        <div class="account-name" id="accountName">กรุณาตั้งค่าใน Admin</div>
+
+        <div class="account-copy">
+          <div class="account-number" id="accountNumber">-</div>
+          <button class="copy-btn" onclick="copyAccount()">คัดลอก</button>
+        </div>
+      </div>
+
+      <div class="pay-note" id="paymentNote">
+        หลังโอนเงิน กรุณาเก็บสลิปไว้สำหรับยืนยันออเดอร์ ♡
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="modal" id="adminModal">
+  <div class="sheet">
+
+    <div class="sheet-head">
+      <h3>Admin</h3>
+      <button class="close" onclick="closeModal('adminModal')">×</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="adminLoginBox">
+
+      <div class="admin-note">
+        เข้าสู่ระบบด้วยบัญชี Firebase Authentication ของแอดมิน
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input id="adminEmail" type="email" autocomplete="username" placeholder="admin@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input id="adminPassword" type="password" autocomplete="current-password" placeholder="••••••••">
+      </div>
+
+      <button class="big-btn" onclick="loginAdmin()">เข้าสู่ระบบ</button>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel" class="hide">
+
+      <div class="admin-note" id="signedInText">เข้าสู่ระบบแล้ว</div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="showAdminTab('works',this)">งาน</button>
+        <button class="admin-tab" onclick="showAdminTab('categories',this)">หมวดหมู่</button>
+        <button class="admin-tab" onclick="showAdminTab('queue',this)">คิว</button>
+        <button class="admin-tab" onclick="showAdminTab('site',this)">หน้าเว็บ / เพลง</button>
+        <button class="admin-tab" onclick="showAdminTab('payment',this)">ชำระเงิน</button>
+        <button class="admin-tab" onclick="showAdminTab('theme',this)">ธีม 7 สี</button>
+      </div>
+
+      <!-- WORKS -->
+      <div id="adminWorksTab">
+
+        <div class="admin-card">
+          <h4 id="workFormTitle">เพิ่มงาน</h4>
+
+          <input type="hidden" id="editWorkId">
+
+          <div class="form-group">
+            <label>ชื่อสินค้า</label>
+            <input id="workName" placeholder="ชื่อสินค้า">
+          </div>
+
+          <div class="form-group">
+            <label>ราคา</label>
+            <input id="workPrice" type="number" min="0" placeholder="99">
+          </div>
+
+          <div class="form-group">
+            <label>รายละเอียด</label>
+            <textarea id="workDesc" placeholder="รายละเอียดสั้น ๆ"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>รูปงาน</label>
+            <input id="workImage" placeholder="วาง URL หรือเลือกรูปจากแกลเลอรี">
+
+            <div class="gallery-upload">
+              <input
+                id="workImageFile"
+                type="file"
+                accept="image/*"
+                class="hide"
+                onchange="handleWorkImageFile(event)"
+              >
+
+              <div class="gallery-upload-actions">
+                <button
+                  type="button"
+                  class="gallery-pick-btn"
+                  onclick="document.getElementById('workImageFile').click()"
+                >
+                  🖼 เลือกรูปจากแกลเลอรี
+                </button>
+
+                <button
+                  type="button"
+                  class="gallery-clear-btn"
+                  onclick="clearWorkImageSelection()"
+                >
+                  ล้างรูป
+                </button>
+              </div>
+
+              <img
+                id="workImagePreview"
+                class="gallery-preview hide"
+                alt="ตัวอย่างรูปงาน"
+              >
+
+              <div class="gallery-hint">
+                รูปจากแกลเลอรีจะถูกย่อ/บีบอัดก่อนบันทึกลง Firestore
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>ลิงก์ปุ่มดูงาน</label>
+            <input
+              id="workLink"
+              type="url"
+              inputmode="url"
+              placeholder="วางลิงก์ตรงนี้ เช่น https://..."
+              autocomplete="off"
+            >
+            <div style="font-size:8px;color:var(--muted);margin-top:4px">
+              ลิงก์นี้จะเปิดเมื่อกดปุ่ม “ไปที่ลิงก์งาน” ในหน้ารายละเอียด
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>หมวดหมู่</label>
+            <select id="workCategory"></select>
+          </div>
+
+          <button class="big-btn" onclick="saveWork()">บันทึกงาน</button>
+
+          <button
+            class="secondary hide"
+            id="cancelEditBtn"
+            onclick="cancelEdit()"
+          >
+            ยกเลิกการแก้ไข
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <h4>รายการทั้งหมด</h4>
+          <div id="adminWorkList"></div>
+        </div>
+
+      </div>
+
+      <!-- CATEGORIES -->
+      <div id="adminCategoriesTab" class="hide">
+
+        <div class="admin-card">
+          <h4 id="categoryFormTitle">เพิ่มหมวดหมู่</h4>
+
+          <input type="hidden" id="editCategoryId">
+
+          <div class="form-group">
+            <label>ชื่อหมวด</label>
+            <input id="categoryName" placeholder="เช่น ตัวอย่างงาน">
+          </div>
+
+          <div class="form-group">
+            <label>ไอคอน / ตัวอักษรสั้น ๆ</label>
+            <input id="categoryIcon" maxlength="4" placeholder="✦">
+          </div>
+
+          <div class="form-group">
+            <label>รูปแบบปุ่ม</label>
+            <select id="categoryLayout">
+              <option value="top">ช่องด้านบน</option>
+              <option value="bottom">แถบด้านล่าง</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>ลำดับ</label>
+            <input id="categoryOrder" type="number" min="0" value="0">
+          </div>
+
+          <button class="big-btn" onclick="saveCategory()">บันทึกหมวดหมู่</button>
+
+          <button
+            class="secondary hide"
+            id="cancelCategoryBtn"
+            onclick="cancelCategoryEdit()"
+          >
+            ยกเลิกการแก้ไข
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <h4>หมวดหมู่ทั้งหมด</h4>
+          <div id="adminCategoryList"></div>
+        </div>
+
+      </div>
+
+      <!-- QUEUE -->
+      <div id="adminQueueTab" class="hide">
+
+        <div class="admin-card">
+          <h4 id="queueFormTitle">เพิ่มคิว</h4>
+
+          <input type="hidden" id="editQueueId">
+
+          <div class="form-group">
+            <label>ชื่อลูกค้า</label>
+            <input id="queueCustomer" placeholder="ชื่อลูกค้า">
+          </div>
+
+          <div class="form-group">
+            <label>ช่องทางติดต่อ</label>
+            <input id="queueContact" placeholder="@line / facebook / etc.">
+          </div>
+
+          <div class="form-group">
+            <label>ชื่องาน</label>
+            <input id="queueWork" placeholder="งานที่สั่ง">
+          </div>
+
+          <div class="form-group">
+            <label>สถานะ</label>
+            <select id="queueStatus">
+              <option value="waiting">รอคิว</option>
+              <option value="working">กำลังทำ</option>
+              <option value="review">รอตรวจ</option>
+              <option value="done">เสร็จแล้ว</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>ลำดับคิว</label>
+            <input id="queueOrder" type="number" min="1" value="1">
+          </div>
+
+          <div class="form-group">
+            <label>หมายเหตุ</label>
+            <textarea id="queueNote" placeholder="รายละเอียดเพิ่มเติม"></textarea>
+          </div>
+
+          <button class="big-btn" onclick="saveQueue()">บันทึกคิว</button>
+
+          <button
+            class="secondary hide"
+            id="cancelQueueBtn"
+            onclick="cancelQueueEdit()"
+          >
+            ยกเลิกการแก้ไข
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <h4>รายการคิว</h4>
+          <div id="adminQueueList"></div>
+        </div>
+
+      </div>
+
+      <!-- SITE + MUSIC -->
+      <div id="adminSiteTab" class="hide">
+
+        <div class="admin-card">
+          <h4>ข้อมูลหน้าเว็บ / เพลง</h4>
+
+          <div class="form-group">
+            <label>ชื่อร้าน</label>
+            <input id="settingShopName">
+          </div>
+
+          <div class="form-group">
+            <label>Bio ใต้โปรไฟล์</label>
+            <textarea id="settingBio"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Header GIF / Image</label>
+            <input
+              id="settingHeaderGif"
+              placeholder="วาง URL หรือเลือกไฟล์จากแกลเลอรี"
+            >
+
+            <div class="gallery-upload">
+              <input
+                id="headerImageFile"
+                type="file"
+                accept="image/*,.gif"
+                class="hide"
+                onchange="handleHeaderImageFile(event)"
+              >
+
+              <div class="gallery-upload-actions">
+                <button
+                  type="button"
+                  class="gallery-pick-btn"
+                  onclick="document.getElementById('headerImageFile').click()"
+                >
+                  🖼 เลือก Header จากแกลเลอรี
+                </button>
+
+                <button
+                  type="button"
+                  class="gallery-clear-btn"
+                  onclick="clearHeaderImageSelection()"
+                >
+                  ล้าง Header
+                </button>
+              </div>
+
+              <img
+                id="headerImagePreview"
+                class="gallery-preview hide"
+                alt="ตัวอย่าง Header"
+              >
+
+              <div class="gallery-hint">
+                รองรับรูปภาพและ GIF — GIF จะคง animation ไว้ถ้าขนาดไม่ใหญ่เกินไป
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Profile image</label>
+            <input
+              id="settingProfileImage"
+              placeholder="วาง URL หรือเลือกรูปจากแกลเลอรี"
+            >
+
+            <div class="gallery-upload">
+              <input
+                id="profileImageFile"
+                type="file"
+                accept="image/*"
+                class="hide"
+                onchange="handleProfileImageFile(event)"
+              >
+
+              <div class="gallery-upload-actions">
+                <button
+                  type="button"
+                  class="gallery-pick-btn"
+                  onclick="document.getElementById('profileImageFile').click()"
+                >
+                  🖼 เลือกรูปโปรไฟล์
+                </button>
+
+                <button
+                  type="button"
+                  class="gallery-clear-btn"
+                  onclick="clearProfileImageSelection()"
+                >
+                  ล้างรูป
+                </button>
+              </div>
+
+              <img
+                id="profileImagePreview"
+                class="gallery-preview hide"
+                alt="ตัวอย่างรูปโปรไฟล์"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Music URL (.mp3)</label>
+            <input id="settingMusic" placeholder="link here">
+          </div>
+<div class="form-group">
+            <label>LINE URL</label>
+            <input id="settingLineLink" placeholder="link here">
+          </div>
+
+          <div class="form-group">
+            <label>Instagram URL</label>
+            <input id="settingInstagramLink" placeholder="link here">
+          </div>
+
+          <div class="form-group">
+            <label>Facebook URL</label>
+            <input id="settingFacebookLink" placeholder="link here">
+          </div>
+
+          <button class="big-btn" onclick="saveSiteSettings()">บันทึกหน้าเว็บ</button>
+        </div>
+
+      </div>
+
+      <!-- PAYMENT -->
+      <div id="adminPaymentTab" class="hide">
+
+        <div class="admin-card">
+          <h4>ข้อมูลชำระเงิน</h4>
+
+          <div class="form-group">
+            <label>QR ชำระเงิน</label>
+            <input
+              id="settingQR"
+              placeholder="วาง URL หรือเลือกรูป QR จากแกลเลอรี"
+            >
+
+            <div class="gallery-upload">
+              <input
+                id="qrImageFile"
+                type="file"
+                accept="image/*"
+                class="hide"
+                onchange="handleQRImageFile(event)"
+              >
+
+              <div class="gallery-upload-actions">
+                <button
+                  type="button"
+                  class="gallery-pick-btn"
+                  onclick="document.getElementById('qrImageFile').click()"
+                >
+                  🖼 เลือก QR จากแกลเลอรี
+                </button>
+
+                <button
+                  type="button"
+                  class="gallery-clear-btn"
+                  onclick="clearQRImageSelection()"
+                >
+                  ล้าง QR
+                </button>
+              </div>
+
+              <img
+                id="qrImagePreview"
+                class="gallery-preview hide"
+                alt="ตัวอย่าง QR ชำระเงิน"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>ธนาคาร</label>
+            <input id="settingBank" placeholder="ชื่อธนาคาร">
+          </div>
+
+          <div class="form-group">
+            <label>ชื่อบัญชี</label>
+            <input id="settingAccountName" placeholder="ชื่อบัญชี">
+          </div>
+
+          <div class="form-group">
+            <label>เลขบัญชี</label>
+            <input id="settingAccountNumber" placeholder="000-0-00000-0">
+          </div>
+
+          <div class="form-group">
+            <label>ข้อความใต้การชำระเงิน</label>
+            <textarea id="settingPaymentNote"></textarea>
+          </div>
+
+          <button class="big-btn" onclick="savePaymentSettings()">บันทึกการชำระเงิน</button>
+        </div>
+
+      </div>
+
+      <!-- 7 THEMES -->
+      <div id="adminThemeTab" class="hide">
+
+        <div class="admin-card">
+          <h4>เลือกธีม 7 สี</h4>
+
+          <div class="theme-grid">
+            <button class="theme-choice" data-theme-choice="pink" onclick="previewTheme('pink')">
+              <span class="theme-dot" style="display:block;background:#EFD5DF"></span>
+              ชมพู
+            </button>
+
+            <button class="theme-choice" data-theme-choice="lavender" onclick="previewTheme('lavender')">
+              <span class="theme-dot" style="display:block;background:#bca9e4"></span>
+              ม่วง
+            </button>
+
+            <button class="theme-choice" data-theme-choice="blue" onclick="previewTheme('blue')">
+              <span class="theme-dot" style="display:block;background:#9ccde7"></span>
+              ฟ้า
+            </button>
+
+            <button class="theme-choice" data-theme-choice="mint" onclick="previewTheme('mint')">
+              <span class="theme-dot" style="display:block;background:#9dd7c1"></span>
+              มิ้นต์
+            </button>
+
+            <button class="theme-choice" data-theme-choice="peach" onclick="previewTheme('peach')">
+              <span class="theme-dot" style="display:block;background:#efb18f"></span>
+              พีช
+            </button>
+
+            <button class="theme-choice" data-theme-choice="butter" onclick="previewTheme('butter')">
+              <span class="theme-dot" style="display:block;background:#e6ca78"></span>
+              เหลือง
+            </button>
+
+            <button class="theme-choice" data-theme-choice="rose" onclick="previewTheme('rose')">
+              <span class="theme-dot" style="display:block;background:#dda2a9"></span>
+              โรส
+            </button>
+          </div>
+
+          <button class="big-btn" onclick="saveTheme()">บันทึกธีม</button>
+        </div>
+
+      </div>
+
+      <button class="secondary" onclick="logoutAdmin()">ออกจากระบบ</button>
+
+    </div>
+  </div>
+</div>
+
+<script type="module">
+/* =========================================================
+   YOUR ORIGINAL FIREBASE CONFIG
+   Firebase Authentication + Firestore only
+   ========================================================= */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  onSnapshot,
+  getDocs,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAa2Xss0YdlY0vzbSldzfZU76kMv4NSLrM",
+  authDomain: "chielle.firebaseapp.com",
+  projectId: "chielle",
+  storageBucket: "chielle.firebasestorage.app",
+  messagingSenderId: "792617604820",
+  appId: "1:792617604820:web:8e4d09c4493bb27c1e4d41"
+};
+
+const ADMIN_UID = "rbPTtlZP6TfvVqwJLeZY7W7potE2";
+
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+/* ---------- DEFAULT SITE ---------- */
+const DEFAULT_SITE = {
+  shopName:"Chielle Store",
+  bio:"welcome to my little shop ♡",
+  headerGif:"https://i.postimg.cc/NF01hhFJ/𝐋𝐎𝐕𝐄-𝐎𝐍-𝐓𝐇𝐄-𝐁𝐑𝐀𝐈𝐍-𝘣𝘭𝘢𝘤𝘬-𝘳𝘦𝘢𝘥𝘦𝘳-𝐀𝐒𝐋-𝐏𝐔𝐌𝐏𝐊𝐈𝐍-𝐏𝐀𝐓𝐂𝐇-𝐇𝐄𝐀𝐃𝐂𝐀𝐍𝐎𝐍𝐒.gif",
+  profileImage:"https://i.postimg.cc/X7kpf1vY/Surprised-Luffy-Reaction-GIF-Iconic-One-Piece-Moment-Wallpaper-Engine-Space.gif",
+  musicUrl:"",
+  qr:"",
+  bank:"กรุณาตั้งค่าใน Admin",
+  accountName:"กรุณาตั้งค่าใน Admin",
+  accountNumber:"-",
+  paymentNote:"หลังโอนเงิน กรุณาเก็บสลิปไว้สำหรับยืนยันออเดอร์ ♡",
+  lineLink:"link here",
+  instagramLink:"link here",
+  facebookLink:"link here",
+  theme:"pink"
+};
+
+/* ---------- YOUR ORIGINAL CATEGORIES AS FALLBACK ---------- */
+const DEFAULT_CATEGORIES = [
+  {id:"blog",name:"บ้อค",icon:"▦",layout:"top",order:1},
+  {id:"toon",name:"ตูน",icon:"▤",layout:"top",order:2},
+  {id:"decorate",name:"แต่ง",icon:"✦",layout:"top",order:3},
+  {id:"teach",name:"สอน",icon:"✎",layout:"top",order:4},
+  {id:"example",name:"ตัวอย่างงาน",icon:"♡",layout:"bottom",order:5},
+  {id:"ef",name:"ปล่อยเอฟ",icon:"✦",layout:"bottom",order:6}
+];
+
+const DEMO_WORKS = [
+  {id:"demo-blog",name:"Blog Box",price:59,desc:"งานตัวอย่างหมวดบ้อค",image:"",category:"blog",demo:true,link:""},
+  {id:"demo-toon",name:"Cute Toon",price:79,desc:"งานตัวอย่างหมวดตูน",image:"",category:"toon",demo:true,link:""},
+  {id:"demo-deco",name:"Decor Set",price:49,desc:"งานตัวอย่างหมวดแต่ง",image:"",category:"decorate",demo:true,link:""},
+  {id:"demo-teach",name:"Mini Class",price:99,desc:"งานตัวอย่างหมวดสอน",image:"",category:"teach",demo:true,link:""},
+  {id:"demo-example",name:"ตัวอย่างงาน",price:35,desc:"ตัวอย่างสำหรับดูลายงาน",image:"",category:"example",demo:true,link:""},
+  {id:"demo-ef",name:"งานพร้อมเอฟ",price:129,desc:"งานพร้อมปล่อยเอฟ",image:"",category:"ef",demo:true,link:""}
+];
+
+const STATUS_TEXT = {
+  waiting:"รอคิว",
+  working:"กำลังทำ",
+  review:"รอตรวจ",
+  done:"เสร็จแล้ว"
+};
+
+let site = {...DEFAULT_SITE};
+let works = [];
+let categories = [];
+let queues = [];
+
+let currentCategory = "blog";
+let isAdmin = false;
+let previewThemeValue = "pink";
+
+let cart = [];
+try{
+  cart = JSON.parse(localStorage.getItem("shopCart") || "[]");
+  if(!Array.isArray(cart)) cart = [];
+}catch{
+  cart = [];
+}
+
+function saveCartLocal(){
+  localStorage.setItem("shopCart",JSON.stringify(cart));
+}
+
+/* =========================================================
+   REALTIME DATA
+   ========================================================= */
+onSnapshot(doc(db,"site","main"), snap=>{
+  site = snap.exists()
+    ? {...DEFAULT_SITE,...snap.data()}
+    : {...DEFAULT_SITE};
+
+  previewThemeValue = site.theme || "pink";
+
+  applySite();
+  fillAdminSite();
+  markThemeButtons();
+}, err=>{
+  console.error("site/main:",err);
+  applySite();
+});
+
+onSnapshot(collection(db,"categories"), snap=>{
+  categories = snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
+
+  categories.sort((a,b)=>Number(a.order||0)-Number(b.order||0));
+
+  if(displayCategories().length && !displayCategories().some(c=>c.id===currentCategory)){
+    currentCategory = displayCategories()[0].id;
+  }
+
+  renderCategories();
+  fillWorkCategoryOptions();
+  renderAdminCategories();
+  renderWorks();
+}, err=>{
+  console.error("categories:",err);
+  categories = [];
+  renderCategories();
+  fillWorkCategoryOptions();
+  renderWorks();
+});
+
+onSnapshot(collection(db,"works"), snap=>{
+  works = snap.docs.map(d=>({id:d.id,...d.data()}));
+
+  cleanupCart();
+  renderWorks();
+  renderOtherWorks();
+  renderCart();
+  renderAdminWorks();
+}, err=>{
+  console.error("works:",err);
+  works = [];
+  renderWorks();
+  renderOtherWorks();
+  renderCart();
+});
+
+onSnapshot(collection(db,"queues"), snap=>{
+  queues = snap.docs.map(d=>({id:d.id,...d.data()}));
+  queues.sort((a,b)=>Number(a.order||0)-Number(b.order||0));
+
+  renderQueues();
+  renderAdminQueues();
+}, err=>{
+  console.error("queues:",err);
+  queues = [];
+  renderQueues();
+});
+
+/* =========================================================
+   FALLBACK / INITIAL CATEGORY SEED
+   ========================================================= */
+function displayCategories(){
+  return categories.length ? categories : DEFAULT_CATEGORIES;
+}
+
+function displayedWorks(){
+  return works.length ? works : DEMO_WORKS;
+}
+
+async function ensureDefaultCategories(){
+  if(!requireAdmin(false)) return;
+  if(categories.length) return;
+
+  try{
+    const snap = await getDocs(collection(db,"categories"));
+
+    if(!snap.empty) return;
+
+    for(const cat of DEFAULT_CATEGORIES){
+      await setDoc(
+        doc(db,"categories",cat.id),
+        {
+          name:cat.name,
+          icon:cat.icon,
+          layout:cat.layout,
+          order:cat.order,
+          createdAt:serverTimestamp(),
+          updatedAt:serverTimestamp()
+        }
+      );
+    }
+  }catch(err){
+    console.error("seed categories:",err);
+  }
+}
+
+/* =========================================================
+   SITE / THEME / MUSIC
+   ========================================================= */
+function applySite(){
+  const name = site.shopName || "Chielle Store";
+
+  document.getElementById("brandName").textContent = name;
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("paymentShopName").textContent = name;
+  document.getElementById("profileBio").textContent = site.bio || "";
+
+  setImage(
+    document.getElementById("headerGif"),
+    document.getElementById("bannerFallback"),
+    site.headerGif
+  );
+
+  setImage(
+    document.getElementById("profileImage"),
+    document.getElementById("profileFallback"),
+    site.profileImage
+  );
+
+  setImage(
+    document.getElementById("qrImage"),
+    document.getElementById("qrFallback"),
+    site.qr
+  );
+
+  document.getElementById("bankName").textContent = site.bank || "-";
+  document.getElementById("accountName").textContent = site.accountName || "-";
+  document.getElementById("accountNumber").textContent = site.accountNumber || "-";
+  document.getElementById("paymentNote").textContent = site.paymentNote || "";
+applyExternalLink(
+    document.getElementById("lineContact"),
+    site.lineLink
+  );
+
+  applyExternalLink(
+    document.getElementById("instagramContact"),
+    site.instagramLink
+  );
+
+  applyExternalLink(
+    document.getElementById("facebookContact"),
+    site.facebookLink
+  );
+
+  document.body.dataset.theme = site.theme || "pink";
+
+  setupMusic(site.musicUrl || "");
+}
+
+function applyExternalLink(element,url){
+  const value = String(url || "").trim();
+  const invalid =
+    !value
+    ||
+    value.toLowerCase()==="link here";
+
+  if(invalid){
+    element.href = "#";
+    element.classList.add("disabled");
+    return;
+  }
+
+  element.href = value;
+  element.classList.remove("disabled");
+}
+
+function setImage(img,fallback,url){
+  if(url && url.trim() && url.trim().toLowerCase()!=="link here"){
+    img.src = url;
+    img.classList.remove("hide");
+    fallback.classList.add("hide");
+
+    img.onerror = ()=>{
+      img.classList.add("hide");
+      fallback.classList.remove("hide");
+    };
+  }else{
+    img.classList.add("hide");
+    fallback.classList.remove("hide");
+  }
+}
+
+let musicInteractionFallbackAdded = false;
+
+async function tryAutoPlayMusic(){
+  const audio = document.getElementById("musicAudio");
+  const btn = document.getElementById("musicBtn");
+
+  if(
+    !site.musicUrl
+    ||
+    site.musicUrl.trim().toLowerCase()==="link here"
+  ){
+    return false;
+  }
+
+  try{
+    await audio.play();
+    btn.classList.add("playing");
+    btn.textContent = "❚❚";
+    return true;
+  }catch(err){
+    // Most mobile browsers can block sound autoplay until the first user tap.
+    console.log("Music autoplay waiting for first interaction.",err);
+    return false;
+  }
+}
+
+function addMusicInteractionFallback(){
+  if(musicInteractionFallbackAdded) return;
+  musicInteractionFallbackAdded = true;
+
+  const startOnFirstInteraction = async ()=>{
+    const started = await tryAutoPlayMusic();
+
+    if(started){
+      document.removeEventListener("pointerdown",startOnFirstInteraction);
+      document.removeEventListener("touchstart",startOnFirstInteraction);
+      document.removeEventListener("keydown",startOnFirstInteraction);
+      musicInteractionFallbackAdded = false;
+    }
+  };
+
+  document.addEventListener("pointerdown",startOnFirstInteraction,{passive:true});
+  document.addEventListener("touchstart",startOnFirstInteraction,{passive:true});
+  document.addEventListener("keydown",startOnFirstInteraction);
+}
+
+function setupMusic(url){
+  const audio = document.getElementById("musicAudio");
+  const btn = document.getElementById("musicBtn");
+
+  audio.loop = true;
+  audio.autoplay = true;
+
+  if(!url || url.trim().toLowerCase()==="link here"){
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+    btn.classList.remove("playing");
+    btn.textContent = "♫";
+    return;
+  }
+
+  if(audio.getAttribute("src") !== url){
+    audio.src = url;
+    audio.load();
+  }
+
+  // Try immediately when the website/settings load.
+  tryAutoPlayMusic().then(started=>{
+    if(!started){
+      // If the browser blocks autoplay, the first tap/key starts it.
+      addMusicInteractionFallback();
+    }
+  });
+}
+
+window.toggleMusic = async function(){
+  const audio = document.getElementById("musicAudio");
+  const btn = document.getElementById("musicBtn");
+
+  if(!site.musicUrl || site.musicUrl.trim().toLowerCase()==="link here"){
+    alert("ยังไม่ได้ตั้งค่า Music URL ใน Admin");
+    return;
+  }
+
+  try{
+    if(audio.paused){
+      audio.loop = true;
+      await audio.play();
+      btn.classList.add("playing");
+      btn.textContent = "❚❚";
+    }else{
+      audio.pause();
+      btn.classList.remove("playing");
+      btn.textContent = "♫";
+    }
+  }catch(err){
+    console.error(err);
+    alert("เปิดเพลงไม่ได้ กรุณาตรวจลิงก์เพลง");
+  }
+};
+
+/* =========================================================
+   CATEGORY UI
+   ========================================================= */
+function categoryIconHTML(cat){
+  const icons = {
+    blog: `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="6" width="18" height="13" rx="3"></rect>
+        <path d="M3 10h18"></path>
+        <circle cx="17.5" cy="14.5" r="1"></circle>
+      </svg>
+    `,
+    toon: `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3.5 5.5c2.5-1 5.1-.8 8.5 1.1v12c-3.4-1.9-6-2.1-8.5-1.1z"></path>
+        <path d="M20.5 5.5c-2.5-1-5.1-.8-8.5 1.1v12c3.4-1.9 6-2.1 8.5-1.1z"></path>
+      </svg>
+    `,
+    decorate: `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"></path>
+        <path d="M18.2 14.2l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z"></path>
+        <path d="M5.2 14.8l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7z"></path>
+      </svg>
+    `,
+    teach: `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 9.5 12 5l9 4.5-9 4.5z"></path>
+        <path d="M7 12v4.2c2.8 1.8 7.2 1.8 10 0V12"></path>
+        <path d="M21 10v5"></path>
+      </svg>
+    `,
+    example: `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+        <circle cx="9" cy="9" r="1.5"></circle>
+        <path d="m6.5 17 4-4 2.5 2.5 2-2 2.5 3.5"></path>
+      </svg>
+    `,
+    ef: `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7.5h11l5 4.5-5 4.5H4z"></path>
+        <circle cx="8" cy="12" r="1.3"></circle>
+      </svg>
+    `
+  };
+
+  if(icons[cat.id]) return icons[cat.id];
+
+  return `<span class="fallback-icon">${escapeHTML(cat.icon||"♡")}</span>`;
+}
+
+function renderCategories(){
+  const topBox = document.getElementById("categoryTop");
+  const list = displayCategories();
+
+  const top = list
+    .filter(x=>(x.layout || "top")==="top")
+    .sort((a,b)=>Number(a.order||0)-Number(b.order||0));
+
+  if(top.length && !top.some(cat=>cat.id===currentCategory)){
+    currentCategory = top[0].id;
+  }
+
+  topBox.innerHTML = top.map(cat=>`
+    <button
+      class="category-box ${cat.id===currentCategory ? "active":""}"
+      data-category="${escapeAttr(cat.id)}"
+      onclick="selectCategory('${escapeJs(cat.id)}',this)"
+    >
+      <span class="ico">${categoryIconHTML(cat)}</span>
+      <span class="txt">${escapeHTML(cat.name||"ไม่มีชื่อ")}</span>
+    </button>
+  `).join("");
+
+  updateWorkTitle();
+  renderOtherCategories();
+}
+
+window.selectCategory = function(category,button){
+  currentCategory = category;
+
+  document.querySelectorAll("[data-category]").forEach(el=>{
+    el.classList.remove("active");
+  });
+
+  if(button) button.classList.add("active");
+
+  updateWorkTitle();
+  renderWorks();
+
+  document.getElementById("worksSection")
+    .scrollIntoView({behavior:"smooth",block:"start"});
+};
+
+function updateWorkTitle(){
+  const cat = displayCategories().find(x=>x.id===currentCategory);
+
+  document.getElementById("workTitle").textContent =
+    cat ? `รายการ${cat.name}` : "รายการพร้อมขาย";
+}
+
+/* =========================================================
+   OTHER PAGE
+   ========================================================= */
+let currentOtherCategory = "example";
+
+function otherCategoryIconHTML(id){
+  if(id==="example"){
+    return `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+        <circle cx="9" cy="9" r="1.5"></circle>
+        <path d="m6.5 17 4-4 2.5 2.5 2-2 2.5 3.5"></path>
+      </svg>
+    `;
+  }
+
+  if(id==="ef"){
+    return `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7.5h11l5 4.5-5 4.5H4z"></path>
+        <circle cx="8" cy="12" r="1.3"></circle>
+      </svg>
+    `;
+  }
+
+  return `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="5" y="4" width="14" height="16" rx="3"></rect>
+      <path d="M8 8h8"></path>
+      <path d="M8 12h8"></path>
+      <path d="M8 16h5"></path>
+    </svg>
+  `;
+}
+
+function renderOtherCategories(){
+  const box = document.getElementById("otherCategoryGrid");
+  if(!box) return;
+
+  const otherCats = displayCategories()
+    .filter(cat=>cat.id==="example" || cat.id==="ef")
+    .sort((a,b)=>Number(a.order||0)-Number(b.order||0));
+
+  if(otherCats.length && !otherCats.some(cat=>cat.id===currentOtherCategory)){
+    currentOtherCategory = otherCats[0].id;
+  }
+
+  box.innerHTML =
+    otherCats.map(cat=>`
+      <button
+        class="other-category-card ${cat.id===currentOtherCategory ? "active":""}"
+        data-other-category="${escapeAttr(cat.id)}"
+        onclick="selectOtherCategory('${escapeJs(cat.id)}')"
+      >
+        <span class="other-category-icon">
+          ${otherCategoryIconHTML(cat.id)}
+        </span>
+        <span>${escapeHTML(cat.name||"ไม่มีชื่อ")}</span>
+      </button>
+    `).join("")
+    +
+    `
+      <button class="other-category-card" onclick="showQueuePage()">
+        <span class="other-category-icon">
+          ${otherCategoryIconHTML("queue")}
+        </span>
+        <span>เช็คคิว</span>
+      </button>
+    `;
+
+  renderOtherWorks();
+}
+
+window.selectOtherCategory = function(id){
+  currentOtherCategory = id;
+
+  document
+    .querySelectorAll("[data-other-category]")
+    .forEach(btn=>{
+      btn.classList.toggle(
+        "active",
+        btn.dataset.otherCategory===id
+      );
+    });
+
+  renderOtherWorks();
+};
+
+function renderOtherWorks(){
+  const box = document.getElementById("otherProducts");
+  const title = document.getElementById("otherWorkTitle");
+  const count = document.getElementById("otherWorkCount");
+
+  if(!box || !title || !count) return;
+
+  const cat = displayCategories().find(x=>x.id===currentOtherCategory);
+  title.textContent = cat?.name || "Other";
+
+  let list = displayedWorks()
+    .filter(item=>item.category===currentOtherCategory);
+
+  list.sort((a,b)=>{
+    const at = a.createdAt?.seconds || 0;
+    const bt = b.createdAt?.seconds || 0;
+    return bt-at;
+  });
+
+  count.textContent = `${list.length} รายการ`;
+
+  if(!list.length){
+    box.innerHTML = `<div class="empty">ยังไม่มีงานในหมวดนี้ ♡</div>`;
+    return;
+  }
+
+  box.innerHTML = list.map(workCard).join("");
+}
+
+/* =========================================================
+   WORKS
+   ========================================================= */
+window.renderWorks = function(){
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  let list = displayedWorks().filter(item=>{
+    const sameCategory = item.category===currentCategory;
+    const text = `${item.name||""} ${item.desc||""}`.toLowerCase();
+
+    return sameCategory && text.includes(q);
+  });
+
+  list.sort((a,b)=>{
+    const at = a.createdAt?.seconds || 0;
+    const bt = b.createdAt?.seconds || 0;
+    return bt-at;
+  });
+
+  const categoryTotal = displayedWorks()
+    .filter(x=>x.category===currentCategory)
+    .length;
+
+  document.getElementById("workCount").textContent =
+    `${list.length} รายการ`;
+
+  document.getElementById("workSubtitle").textContent =
+    `แสดง ${list.length} จาก ${categoryTotal} รายการ`;
+
+  const box = document.getElementById("products");
+
+  if(!list.length){
+    box.innerHTML =
+      `<div class="empty">ยังไม่มีงานในหมวดนี้ ♡</div>`;
+
+    return;
+  }
+
+  box.innerHTML = list.map(workCard).join("");
+};
+
+function workCard(item){
+  const selected = cart.includes(item.id);
+
+  const image = item.image
+    ? `<img src="${escapeAttr(item.image)}" alt="${escapeAttr(item.name||"work")}" onerror="this.parentElement.innerHTML='♡'">`
+    : "♡";
+
+  const cat = displayCategories().find(x=>x.id===item.category);
+
+  return `
+    <article
+      class="product-card"
+      onclick="openWorkDetail('${escapeJs(item.id)}')"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openWorkDetail('${escapeJs(item.id)}')}"
+    >
+
+      <div class="product-img">${image}</div>
+
+      <button
+        class="red-check ${selected ? "selected":""}"
+        onclick="event.stopPropagation();toggleCart('${escapeJs(item.id)}')"
+        aria-label="เลือกสินค้า"
+      >✓</button>
+
+      <div class="product-info">
+
+        <div class="product-title">
+          ${escapeHTML(item.name||"ไม่มีชื่อ")}
+        </div>
+
+        <div class="product-desc">
+          ${escapeHTML(item.desc||"")}
+        </div>
+
+        <div class="product-meta">
+
+          <span class="product-price">
+            ฿${money(item.price)}
+          </span>
+
+          <span class="product-category">
+            ${escapeHTML(cat?.name || item.category || "")}
+          </span>
+
+        </div>
+
+      </div>
+    </article>
+  `;
+}
+
+/* =========================================================
+   WORK DETAIL POPUP
+   ========================================================= */
+let currentWorkDetailLink = "";
+
+window.openWorkDetail = function(id){
+  const item = displayedWorks().find(work=>work.id===id);
+  if(!item) return;
+
+  const cat = displayCategories().find(c=>c.id===item.category);
+
+  document.getElementById("workDetailName").textContent =
+    item.name || "ไม่มีชื่อ";
+
+  document.getElementById("workDetailPrice").textContent =
+    `฿${money(item.price)}`;
+
+  document.getElementById("workDetailCategory").textContent =
+    cat?.name || item.category || "หมวดหมู่";
+
+  document.getElementById("workDetailDesc").textContent =
+    item.desc || "ยังไม่มีรายละเอียด";
+
+  const imageBox = document.getElementById("workDetailImage");
+
+  if(item.image){
+    imageBox.innerHTML =
+      `<img src="${escapeAttr(item.image)}" alt="${escapeAttr(item.name||"work")}" onerror="this.parentElement.innerHTML='♡'">`;
+  }else{
+    imageBox.innerHTML = "♡";
+  }
+
+  currentWorkDetailLink = String(item.link || "").trim();
+
+  const linkBtn = document.getElementById("workDetailLinkBtn");
+  const hasLink =
+    currentWorkDetailLink
+    &&
+    currentWorkDetailLink.toLowerCase()!=="link here";
+
+  linkBtn.classList.toggle("disabled",!hasLink);
+  linkBtn.textContent =
+    hasLink
+      ? "ไปที่ลิงก์งาน →"
+      : "ยังไม่ได้ใส่ลิงก์";
+
+  openModal("workDetailModal");
+};
+
+window.goToWorkLink = function(){
+  if(
+    !currentWorkDetailLink
+    ||
+    currentWorkDetailLink.toLowerCase()==="link here"
+  ){
+    return;
+  }
+
+  window.location.href = currentWorkDetailLink;
+};
+
+/* =========================================================
+   CART / RED CHECK SYSTEM
+   ========================================================= */
+window.toggleCart = function(id){
+  if(cart.includes(id)){
+    cart = cart.filter(x=>x!==id);
+  }else{
+    cart.push(id);
+  }
+
+  saveCartLocal();
+  renderWorks();
+  renderOtherWorks();
+  renderCart();
+};
+
+function cartItems(){
+  const map = new Map(
+    displayedWorks().map(x=>[x.id,x])
+  );
+
+  return cart
+    .map(id=>map.get(id))
+    .filter(Boolean);
+}
+
+function cartTotal(){
+  return cartItems()
+    .reduce(
+      (sum,x)=>sum+Number(x.price||0),
+      0
+    );
+}
+
+function cleanupCart(){
+  if(!works.length) return;
+
+  const ids = new Set(
+    works.map(x=>x.id)
+  );
+
+  cart = cart.filter(
+    id=>ids.has(id)
+  );
+
+  saveCartLocal();
+}
+
+function renderCart(){
+  const items = cartItems();
+  const total = cartTotal();
+
+  const topCartCountEl = document.getElementById("topCartCount");
+  const cartTotalEl = document.getElementById("cartTotal");
+  const paymentTotalEl = document.getElementById("paymentTotal");
+  const paymentItemCountEl = document.getElementById("paymentItemCount");
+  const systemCartCountEl = document.getElementById("systemCartCount");
+  const systemCartTotalEl = document.getElementById("systemCartTotal");
+
+  if(topCartCountEl) topCartCountEl.textContent = items.length;
+  if(cartTotalEl) cartTotalEl.textContent = `฿${money(total)}`;
+  if(paymentTotalEl) paymentTotalEl.textContent = `฿${money(total)}`;
+  if(paymentItemCountEl) paymentItemCountEl.textContent = `${items.length} รายการ`;
+  if(systemCartCountEl) systemCartCountEl.textContent = items.length;
+  if(systemCartTotalEl) systemCartTotalEl.textContent = `฿${money(total)}`;
+
+  const cartBox =
+    document.getElementById("cartItems");
+
+  const orderBox =
+    document.getElementById("paymentOrderList");
+
+  if(!items.length){
+
+    cartBox.innerHTML =
+      `<div class="empty">ยังไม่มีสินค้าในตะกร้า ♡</div>`;
+
+    orderBox.innerHTML =
+      `<div style="font-size:9px;color:var(--muted)">ยังไม่มีรายการที่เลือก</div>`;
+
+    return;
+  }
+
+  cartBox.innerHTML =
+    items.map(item=>{
+
+      const image = item.image
+        ? `<img src="${escapeAttr(item.image)}" alt="">`
+        : "♡";
+
+      return `
+        <div class="cart-item">
+
+          <div class="cart-thumb">
+            ${image}
+          </div>
+
+          <div class="cart-info">
+
+            <b>
+              ${escapeHTML(item.name||"ไม่มีชื่อ")}
+            </b>
+
+            <span>
+              ฿${money(item.price)}
+            </span>
+
+          </div>
+
+          <button
+            class="remove"
+            onclick="removeCart('${escapeJs(item.id)}')"
+          >
+            ×
+          </button>
+
+        </div>
+      `;
+    }).join("");
+
+  orderBox.innerHTML =
+    items.map(item=>`
+      <div class="pay-row">
+
+        <span>
+          ${escapeHTML(item.name||"ไม่มีชื่อ")}
+        </span>
+
+        <span>
+          ฿${money(item.price)}
+        </span>
+
+      </div>
+    `).join("");
+}
+
+window.removeCart = function(id){
+  cart = cart.filter(x=>x!==id);
+
+  saveCartLocal();
+  renderWorks();
+  renderOtherWorks();
+  renderCart();
+};
+
+window.clearCart = function(){
+  cart = [];
+
+  saveCartLocal();
+  renderWorks();
+  renderOtherWorks();
+  renderCart();
+};
+
+window.selectAllVisible = function(){
+  const q =
+    document
+      .getElementById("searchInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const ids =
+    displayedWorks()
+      .filter(item=>{
+        const text =
+          `${item.name||""} ${item.desc||""}`
+            .toLowerCase();
+
+        return (
+          item.category===currentCategory
+          &&
+          text.includes(q)
+        );
+      })
+      .map(x=>x.id);
+
+  ids.forEach(id=>{
+    if(!cart.includes(id)){
+      cart.push(id);
+    }
+  });
+
+  saveCartLocal();
+  renderWorks();
+  renderOtherWorks();
+  renderCart();
+};
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
+window.openCart = function(){
+  renderCart();
+  openModal("cartModal");
+};
+
+window.openPayment = function(){
+  renderCart();
+  openModal("paymentModal");
+};
+
+window.openPaymentFromCart = function(){
+  closeModal("cartModal");
+  window.openPayment();
+};
+
+window.copyAccount = async function(){
+  const value =
+    String(site.accountNumber||"").trim();
+
+  if(!value || value==="-"){
+    alert("ยังไม่ได้ตั้งค่าเลขบัญชี");
+    return;
+  }
+
+  try{
+    await navigator.clipboard.writeText(value);
+    alert("คัดลอกเลขบัญชีแล้ว ♡");
+  }catch{
+    alert(`เลขบัญชี: ${value}`);
+  }
+};
+
+/* =========================================================
+   BOTTOM NAV
+   ========================================================= */
+function hideMainPages(){
+  document.getElementById("shopContent").classList.add("hide");
+  document.getElementById("otherPage").classList.add("hide");
+  document.getElementById("queuePage").classList.add("hide");
+  document.getElementById("contactPage").classList.add("hide");
+}
+
+function setBottomNavActive(id){
+  document.querySelectorAll(".bottom-nav-btn").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  const active = document.getElementById(id);
+  if(active) active.classList.add("active");
+}
+
+window.showMainPage = function(){
+  hideMainPages();
+
+  document.getElementById("shopContent").classList.remove("hide");
+  setBottomNavActive("navMain");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+};
+
+window.showOtherPage = function(){
+  hideMainPages();
+
+  document.getElementById("otherPage").classList.remove("hide");
+  setBottomNavActive("navOther");
+  renderOtherCategories();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+};
+
+window.openPaymentFromNav = function(){
+  setBottomNavActive("navPayment");
+  window.openPayment();
+
+  const modal = document.getElementById("paymentModal");
+
+  const resetPaymentNav = ()=>{
+    if(!modal.classList.contains("show")){
+      if(!document.getElementById("contactPage").classList.contains("hide")){
+        setBottomNavActive("navContact");
+      }else if(!document.getElementById("otherPage").classList.contains("hide")){
+        setBottomNavActive("navOther");
+      }else{
+        setBottomNavActive("navMain");
+      }
+
+      clearInterval(checker);
+    }
+  };
+
+  const checker = setInterval(resetPaymentNav,150);
+};
+
+
+window.showContactPage = function(){
+  hideMainPages();
+
+  document.getElementById("contactPage").classList.remove("hide");
+  setBottomNavActive("navContact");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+};
+
+/* =========================================================
+   QUEUE PAGE
+   ========================================================= */
+window.showQueuePage = function(){
+  hideMainPages();
+  document.getElementById("queuePage").classList.remove("hide");
+  setBottomNavActive("navOther");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  renderQueues();
+};
+
+window.backToShop = function(){
+  showOtherPage();
+};
+
+window.renderQueues = function(){
+  const waitingCount = queues.filter(item=>item.status==="waiting").length;
+  const workingCount = queues.filter(item=>item.status==="working" || item.status==="review").length;
+  const doneCount = queues.filter(item=>item.status==="done").length;
+
+  const waitingEl = document.getElementById("queueWaitingCount");
+  const workingEl = document.getElementById("queueWorkingCount");
+  const doneEl = document.getElementById("queueDoneCount");
+
+  if(waitingEl) waitingEl.textContent = waitingCount;
+  if(workingEl) workingEl.textContent = workingCount;
+  if(doneEl) doneEl.textContent = doneCount;
+
+  const search =
+    document
+      .getElementById("queueSearch")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const list =
+    queues.filter(item=>{
+
+      const text =
+        `${item.customer||""} ${item.contact||""} ${item.work||""} ${item.note||""}`
+          .toLowerCase();
+
+      return text.includes(search);
+    });
+
+  const box =
+    document.getElementById("queueList");
+
+  if(!list.length){
+
+    box.innerHTML =
+      `<div class="empty">ยังไม่มีคิว หรือไม่พบข้อมูล ♡</div>`;
+
+    return;
+  }
+
+  box.innerHTML =
+    list.map((item,index)=>`
+      <div class="queue-item">
+
+        <div class="queue-no">
+          #${String(item.order ?? index+1).padStart(2,"0")}
+        </div>
+
+        <div class="queue-info">
+
+          <b>
+            ${escapeHTML(item.customer||"ไม่ระบุชื่อ")}
+          </b>
+
+          <p>
+            ${escapeHTML(item.work||"-")}
+            ${item.note ? " · "+escapeHTML(item.note) : ""}
+          </p>
+
+        </div>
+
+        <span class="queue-status ${escapeAttr(item.status||"waiting")}">
+          ${escapeHTML(STATUS_TEXT[item.status]||item.status||"รอคิว")}
+        </span>
+
+      </div>
+    `).join("");
+};
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+function openModal(id){
+  document
+    .getElementById(id)
+    .classList
+    .add("show");
+}
+
+window.closeModal = function(id){
+  const modal = document.getElementById(id);
+  if(modal) modal.classList.remove("show");
+
+  if(id==="paymentModal"){
+    if(!document.getElementById("contactPage").classList.contains("hide")){
+      setBottomNavActive("navContact");
+    }else if(!document.getElementById("otherPage").classList.contains("hide")){
+      setBottomNavActive("navOther");
+    }else{
+      setBottomNavActive("navMain");
+    }
+  }
+};
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal=>{
+
+    modal.addEventListener(
+      "click",
+      e=>{
+
+        if(e.target===modal){
+          modal.classList.remove("show");
+        }
+
+      }
+    );
+
+  });
+
+/* =========================================================
+   AUTH
+   ========================================================= */
+window.openAdmin = function(){
+  openModal("adminModal");
+};
+
+window.loginAdmin = async function(){
+  const email =
+    document
+      .getElementById("adminEmail")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("adminPassword")
+      .value;
+
+  if(!email || !password){
+
+    alert("กรุณาใส่ Email และ Password");
+    return;
+
+  }
+
+  try{
+
+    const cred =
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    if(cred.user.uid!==ADMIN_UID){
+
+      await signOut(auth);
+
+      alert("บัญชีนี้ไม่มีสิทธิ์แอดมิน");
+
+    }
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("เข้าสู่ระบบไม่สำเร็จ");
+
+  }
+};
+
+window.logoutAdmin = async function(){
+  await signOut(auth);
+};
+
+onAuthStateChanged(
+  auth,
+  async user=>{
+
+    isAdmin =
+      !!user
+      &&
+      user.uid===ADMIN_UID;
+
+    document
+      .getElementById("adminLoginBox")
+      .classList
+      .toggle("hide",isAdmin);
+
+    document
+      .getElementById("adminPanel")
+      .classList
+      .toggle("hide",!isAdmin);
+
+    if(isAdmin){
+
+      document
+        .getElementById("signedInText")
+        .textContent =
+        `Admin: ${user.email||user.uid}`;
+
+      await ensureDefaultCategories();
+
+      fillAdminSite();
+      fillWorkCategoryOptions();
+
+      renderAdminWorks();
+      renderAdminCategories();
+      renderAdminQueues();
+
+      markThemeButtons();
+    }
+
+  }
+);
+
+function requireAdmin(showAlert=true){
+  const user = auth.currentUser;
+
+  if(!user || user.uid!==ADMIN_UID){
+
+    if(showAlert){
+      alert("ไม่มีสิทธิ์แก้ไข");
+    }
+
+    return false;
+  }
+
+  return true;
+}
+
+/* =========================================================
+   ADMIN TABS
+   ========================================================= */
+window.showAdminTab = function(tab,button){
+  document
+    .querySelectorAll(".admin-tab")
+    .forEach(x=>
+      x.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+  const tabs = {
+    works:"adminWorksTab",
+    categories:"adminCategoriesTab",
+    queue:"adminQueueTab",
+    site:"adminSiteTab",
+    payment:"adminPaymentTab",
+    theme:"adminThemeTab"
+  };
+
+  Object
+    .values(tabs)
+    .forEach(id=>
+      document
+        .getElementById(id)
+        .classList
+        .add("hide")
+    );
+
+  document
+    .getElementById(tabs[tab])
+    .classList
+    .remove("hide");
+};
+
+/* =========================================================
+   ADMIN WORKS
+   ========================================================= */
+function fillWorkCategoryOptions(){
+  const select =
+    document.getElementById("workCategory");
+
+  if(!select) return;
+
+  select.innerHTML =
+    displayCategories()
+      .map(cat=>`
+        <option value="${escapeAttr(cat.id)}">
+          ${escapeHTML(cat.name||"ไม่มีชื่อ")}
+        </option>
+      `)
+      .join("");
+}
+
+
+let pendingWorkImageData = "";
+let pendingHeaderImageData = "";
+let pendingProfileImageData = "";
+let pendingQRImageData = "";
+
+function updateWorkImagePreview(value){
+  const preview = document.getElementById("workImagePreview");
+  if(!preview) return;
+
+  const src = String(value || "").trim();
+
+  if(!src || src.toLowerCase()==="link here"){
+    preview.classList.add("hide");
+    preview.removeAttribute("src");
+    return;
+  }
+
+  preview.src = src;
+  preview.classList.remove("hide");
+
+  preview.onerror = ()=>{
+    preview.classList.add("hide");
+  };
+}
+
+async function compressWorkImage(file){
+  if(!file || !file.type.startsWith("image/")){
+    throw new Error("Please select an image file.");
+  }
+
+  const rawDataUrl = await new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
+  const img = await new Promise((resolve,reject)=>{
+    const image = new Image();
+    image.onload = ()=>resolve(image);
+    image.onerror = reject;
+    image.src = rawDataUrl;
+  });
+
+  const MAX_SIDE = 900;
+  let width = img.width;
+  let height = img.height;
+
+  if(width > MAX_SIDE || height > MAX_SIDE){
+    const scale = Math.min(MAX_SIDE / width, MAX_SIDE / height);
+    width = Math.max(1, Math.round(width * scale));
+    height = Math.max(1, Math.round(height * scale));
+  }
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext("2d", {alpha:false});
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0,0,width,height);
+  ctx.drawImage(img,0,0,width,height);
+
+  // Try WebP first because it is much smaller for Firestore documents.
+  let quality = 0.78;
+  let dataUrl = canvas.toDataURL("image/webp",quality);
+
+  // Keep reducing quality until the data URL is reasonably small.
+  // Firestore documents have a size limit, so we keep lots of safety room.
+  while(dataUrl.length > 620000 && quality > 0.42){
+    quality -= 0.08;
+    dataUrl = canvas.toDataURL("image/webp",quality);
+  }
+
+  if(dataUrl.length > 760000){
+    throw new Error("IMAGE_TOO_LARGE");
+  }
+
+  return dataUrl;
+}
+
+
+async function compressAdminImage(file, mode="photo"){
+  if(!file || !file.type.startsWith("image/")){
+    throw new Error("Please select an image file.");
+  }
+
+  const rawDataUrl = await new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
+  const img = await new Promise((resolve,reject)=>{
+    const image = new Image();
+    image.onload = ()=>resolve(image);
+    image.onerror = reject;
+    image.src = rawDataUrl;
+  });
+
+  const MAX_SIDE = mode==="qr" ? 1000 : 900;
+  let width = img.width;
+  let height = img.height;
+
+  if(width > MAX_SIDE || height > MAX_SIDE){
+    const scale = Math.min(MAX_SIDE / width, MAX_SIDE / height);
+    width = Math.max(1, Math.round(width * scale));
+    height = Math.max(1, Math.round(height * scale));
+  }
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext("2d", {alpha:false});
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0,0,width,height);
+  ctx.drawImage(img,0,0,width,height);
+
+  let dataUrl;
+
+  if(mode==="qr"){
+    // PNG keeps QR edges crisp and easy to scan.
+    dataUrl = canvas.toDataURL("image/png");
+
+    // If PNG is still too large, fall back to high-quality WebP.
+    if(dataUrl.length > 700000){
+      dataUrl = canvas.toDataURL("image/webp",0.92);
+    }
+  }else{
+    let quality = 0.8;
+    dataUrl = canvas.toDataURL("image/webp",quality);
+
+    while(dataUrl.length > 620000 && quality > 0.44){
+      quality -= 0.08;
+      dataUrl = canvas.toDataURL("image/webp",quality);
+    }
+  }
+
+  if(dataUrl.length > 760000){
+    throw new Error("IMAGE_TOO_LARGE");
+  }
+
+  return dataUrl;
+}
+
+function updateAdminPreview(id,value){
+  const preview = document.getElementById(id);
+  if(!preview) return;
+
+  const src = String(value || "").trim();
+
+  if(!src || src.toLowerCase()==="link here"){
+    preview.classList.add("hide");
+    preview.removeAttribute("src");
+    return;
+  }
+
+  preview.src = src;
+  preview.classList.remove("hide");
+
+  preview.onerror = ()=>{
+    preview.classList.add("hide");
+  };
+}
+
+
+async function readFileAsDataUrl(file){
+  return await new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+window.handleHeaderImageFile = async function(event){
+  const input = event.target;
+  const file = input.files?.[0];
+  if(!file) return;
+
+  try{
+    const isGif =
+      file.type==="image/gif"
+      ||
+      file.name.toLowerCase().endsWith(".gif");
+
+    let dataUrl;
+
+    if(isGif){
+      // Preserve the animated GIF instead of drawing it to canvas.
+      dataUrl = await readFileAsDataUrl(file);
+
+      // Leave safety room for the rest of the Firestore document.
+      if(dataUrl.length > 760000){
+        throw new Error("GIF_TOO_LARGE");
+      }
+    }else{
+      dataUrl = await compressAdminImage(file,"photo");
+    }
+
+    pendingHeaderImageData = dataUrl;
+
+    document.getElementById("settingHeaderGif").value = "";
+    updateAdminPreview("headerImagePreview",pendingHeaderImageData);
+
+  }catch(err){
+    console.error(err);
+
+    if(err?.message==="GIF_TOO_LARGE"){
+      alert("GIF ใหญ่เกินไปสำหรับ Firestore กรุณาใช้ GIF ที่เล็กกว่านี้ หรือวาง URL แทน");
+    }else if(err?.message==="IMAGE_TOO_LARGE"){
+      alert("รูป Header ใหญ่เกินไป กรุณาเลือกรูปที่เล็กกว่านี้");
+    }else{
+      alert("เลือก Header ไม่สำเร็จ");
+    }
+
+    input.value = "";
+  }
+};
+
+window.clearHeaderImageSelection = function(){
+  pendingHeaderImageData = "";
+
+  const fileInput = document.getElementById("headerImageFile");
+  const urlInput = document.getElementById("settingHeaderGif");
+
+  if(fileInput) fileInput.value = "";
+  if(urlInput) urlInput.value = "";
+
+  updateAdminPreview("headerImagePreview","");
+};
+
+document.getElementById("settingHeaderGif")?.addEventListener("input",event=>{
+  const value = event.target.value.trim();
+
+  if(value){
+    pendingHeaderImageData = "";
+
+    const fileInput = document.getElementById("headerImageFile");
+    if(fileInput) fileInput.value = "";
+  }
+
+  updateAdminPreview("headerImagePreview",value);
+});
+
+window.handleProfileImageFile = async function(event){
+  const input = event.target;
+  const file = input.files?.[0];
+  if(!file) return;
+
+  try{
+    pendingProfileImageData = await compressAdminImage(file,"photo");
+
+    document.getElementById("settingProfileImage").value = "";
+    updateAdminPreview("profileImagePreview",pendingProfileImageData);
+  }catch(err){
+    console.error(err);
+
+    if(err?.message==="IMAGE_TOO_LARGE"){
+      alert("รูปโปรไฟล์ใหญ่เกินไป กรุณาเลือกรูปที่เล็กกว่านี้");
+    }else{
+      alert("เลือกรูปโปรไฟล์ไม่สำเร็จ");
+    }
+
+    input.value = "";
+  }
+};
+
+window.clearProfileImageSelection = function(){
+  pendingProfileImageData = "";
+
+  const fileInput = document.getElementById("profileImageFile");
+  const urlInput = document.getElementById("settingProfileImage");
+
+  if(fileInput) fileInput.value = "";
+  if(urlInput) urlInput.value = "";
+
+  updateAdminPreview("profileImagePreview","");
+};
+
+window.handleQRImageFile = async function(event){
+  const input = event.target;
+  const file = input.files?.[0];
+  if(!file) return;
+
+  try{
+    pendingQRImageData = await compressAdminImage(file,"qr");
+
+    document.getElementById("settingQR").value = "";
+    updateAdminPreview("qrImagePreview",pendingQRImageData);
+  }catch(err){
+    console.error(err);
+
+    if(err?.message==="IMAGE_TOO_LARGE"){
+      alert("รูป QR ใหญ่เกินไป กรุณาเลือกรูปที่เล็กกว่านี้");
+    }else{
+      alert("เลือก QR ไม่สำเร็จ");
+    }
+
+    input.value = "";
+  }
+};
+
+window.clearQRImageSelection = function(){
+  pendingQRImageData = "";
+
+  const fileInput = document.getElementById("qrImageFile");
+  const urlInput = document.getElementById("settingQR");
+
+  if(fileInput) fileInput.value = "";
+  if(urlInput) urlInput.value = "";
+
+  updateAdminPreview("qrImagePreview","");
+};
+
+document.getElementById("settingProfileImage")?.addEventListener("input",event=>{
+  const value = event.target.value.trim();
+
+  if(value){
+    pendingProfileImageData = "";
+
+    const fileInput = document.getElementById("profileImageFile");
+    if(fileInput) fileInput.value = "";
+  }
+
+  updateAdminPreview("profileImagePreview",value);
+});
+
+document.getElementById("settingQR")?.addEventListener("input",event=>{
+  const value = event.target.value.trim();
+
+  if(value){
+    pendingQRImageData = "";
+
+    const fileInput = document.getElementById("qrImageFile");
+    if(fileInput) fileInput.value = "";
+  }
+
+  updateAdminPreview("qrImagePreview",value);
+});
+
+window.handleWorkImageFile = async function(event){
+  const input = event.target;
+  const file = input.files?.[0];
+
+  if(!file) return;
+
+  try{
+    const btn = document.querySelector(".gallery-pick-btn");
+    if(btn){
+      btn.disabled = true;
+      btn.textContent = "กำลังเตรียมรูป...";
+    }
+
+    pendingWorkImageData = await compressWorkImage(file);
+
+    // Clear URL text so gallery image becomes the chosen source.
+    document.getElementById("workImage").value = "";
+    updateWorkImagePreview(pendingWorkImageData);
+
+  }catch(err){
+    console.error(err);
+
+    if(err?.message==="IMAGE_TOO_LARGE"){
+      alert("รูปยังใหญ่เกินไป กรุณาเลือกรูปที่เล็กกว่านี้");
+    }else{
+      alert("เลือกรูปไม่สำเร็จ กรุณาลองรูปอื่น");
+    }
+
+    input.value = "";
+  }finally{
+    const btn = document.querySelector(".gallery-pick-btn");
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = "🖼 เลือกรูปจากแกลเลอรี";
+    }
+  }
+};
+
+window.clearWorkImageSelection = function(){
+  pendingWorkImageData = "";
+
+  const fileInput = document.getElementById("workImageFile");
+  const urlInput = document.getElementById("workImage");
+
+  if(fileInput) fileInput.value = "";
+  if(urlInput) urlInput.value = "";
+
+  updateWorkImagePreview("");
+};
+
+document.getElementById("workImage")?.addEventListener("input",event=>{
+  const value = event.target.value.trim();
+
+  if(value){
+    // URL takes priority if admin types/pastes one after choosing a gallery image.
+    pendingWorkImageData = "";
+    const fileInput = document.getElementById("workImageFile");
+    if(fileInput) fileInput.value = "";
+  }
+
+  updateWorkImagePreview(value);
+});
+
+window.saveWork = async function(){
+  if(!requireAdmin()) return;
+
+  const id =
+    document
+      .getElementById("editWorkId")
+      .value
+      .trim();
+
+  const name =
+    document
+      .getElementById("workName")
+      .value
+      .trim();
+
+  const price =
+    Number(
+      document
+        .getElementById("workPrice")
+        .value
+    );
+
+  const desc =
+    document
+      .getElementById("workDesc")
+      .value
+      .trim();
+
+  const imageUrl =
+    document
+      .getElementById("workImage")
+      .value
+      .trim();
+
+  const image =
+    pendingWorkImageData
+    ||
+    imageUrl;
+
+  const link =
+    document
+      .getElementById("workLink")
+      .value
+      .trim();
+
+  const category =
+    document
+      .getElementById("workCategory")
+      .value;
+
+  if(
+    !name
+    ||
+    !Number.isFinite(price)
+    ||
+    price<0
+  ){
+
+    alert("กรุณาใส่ชื่อและราคาให้ถูกต้อง");
+    return;
+
+  }
+
+  const data = {
+    name,
+    price,
+    desc,
+    image,
+    link,
+    category,
+    updatedAt:serverTimestamp()
+  };
+
+  try{
+
+    if(id){
+
+      await updateDoc(
+        doc(db,"works",id),
+        data
+      );
+
+    }else{
+
+      await addDoc(
+        collection(db,"works"),
+        {
+          ...data,
+          createdAt:serverTimestamp()
+        }
+      );
+
+    }
+
+    clearWorkForm();
+
+    alert(
+      id
+      ? "แก้ไขงานแล้ว ♡"
+      : "เพิ่มงานแล้ว ♡"
+    );
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "บันทึกไม่สำเร็จ กรุณาตรวจ Firebase Rules"
+    );
+
+  }
+};
+
+function renderAdminWorks(){
+  const box =
+    document.getElementById("adminWorkList");
+
+  if(!box) return;
+
+  if(!works.length){
+
+    box.innerHTML =
+      `<div style="font-size:9px;color:var(--muted);padding:5px 0">
+        ยังไม่มีงานจริงใน Firestore
+      </div>`;
+
+    return;
+  }
+
+  box.innerHTML =
+    works.map(item=>{
+
+      const cat =
+        displayCategories()
+          .find(c=>c.id===item.category);
+
+      return `
+        <div class="admin-work">
+
+          <div class="admin-work-info">
+
+            <b>
+              ${escapeHTML(item.name||"ไม่มีชื่อ")}
+            </b>
+
+            <small>
+              ${escapeHTML(cat?.name||item.category||"-")}
+              ·
+              ฿${money(item.price)}
+            </small>
+
+          </div>
+
+          <div class="admin-actions">
+
+            ${item.link ? `
+              <button
+                class="mini edit"
+                onclick="openAdminWorkLink('${escapeJs(item.id)}')"
+              >
+                ลิงก์
+              </button>
+            ` : ""}
+
+            <button
+              class="mini edit"
+              onclick="editWork('${escapeJs(item.id)}')"
+            >
+              แก้
+            </button>
+
+            <button
+              class="mini danger"
+              onclick="deleteWork('${escapeJs(item.id)}')"
+            >
+              ลบ
+            </button>
+
+          </div>
+
+        </div>
+      `;
+    }).join("");
+}
+
+window.openAdminWorkLink = function(id){
+  const item = works.find(x=>x.id===id);
+  if(!item || !item.link) return;
+
+  const link = String(item.link).trim();
+  if(!link || link.toLowerCase()==="link here") return;
+
+  window.open(link,"_blank","noopener");
+};
+
+window.editWork = function(id){
+  const item =
+    works.find(x=>x.id===id);
+
+  if(!item) return;
+
+  document.getElementById("editWorkId").value =
+    item.id;
+
+  document.getElementById("workName").value =
+    item.name||"";
+
+  document.getElementById("workPrice").value =
+    Number(item.price||0);
+
+  document.getElementById("workDesc").value =
+    item.desc||"";
+
+  const existingImage = item.image || "";
+
+  if(existingImage.startsWith("data:image/")){
+    pendingWorkImageData = existingImage;
+    document.getElementById("workImage").value = "";
+  }else{
+    pendingWorkImageData = "";
+    document.getElementById("workImage").value = existingImage;
+  }
+
+  const fileInput = document.getElementById("workImageFile");
+  if(fileInput) fileInput.value = "";
+
+  updateWorkImagePreview(existingImage);
+
+  document.getElementById("workLink").value =
+    item.link||"";
+
+  document.getElementById("workCategory").value =
+    item.category||"";
+
+  document.getElementById("workFormTitle").textContent =
+    "แก้ไขงาน";
+
+  document.getElementById("cancelEditBtn")
+    .classList
+    .remove("hide");
+};
+
+window.cancelEdit = function(){
+  clearWorkForm();
+};
+
+function clearWorkForm(){
+  document.getElementById("editWorkId").value = "";
+  document.getElementById("workName").value = "";
+  document.getElementById("workPrice").value = "";
+  document.getElementById("workDesc").value = "";
+  document.getElementById("workImage").value = "";
+  document.getElementById("workLink").value = "";
+
+  pendingWorkImageData = "";
+
+  const fileInput = document.getElementById("workImageFile");
+  if(fileInput) fileInput.value = "";
+
+  updateWorkImagePreview("");
+
+  document.getElementById("workFormTitle").textContent =
+    "เพิ่มงาน";
+
+  document.getElementById("cancelEditBtn")
+    .classList
+    .add("hide");
+
+  fillWorkCategoryOptions();
+}
+
+window.deleteWork = async function(id){
+  if(!requireAdmin()) return;
+
+  const item =
+    works.find(x=>x.id===id);
+
+  if(!item) return;
+
+  if(
+    !confirm(
+      `ลบ "${item.name}" ใช่ไหม?`
+    )
+  ) return;
+
+  try{
+
+    await deleteDoc(
+      doc(db,"works",id)
+    );
+
+    cart =
+      cart.filter(x=>x!==id);
+
+    saveCartLocal();
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("ลบไม่สำเร็จ");
+
+  }
+};
+
+/* =========================================================
+   ADMIN CATEGORIES
+   ========================================================= */
+window.saveCategory = async function(){
+  if(!requireAdmin()) return;
+
+  const id =
+    document
+      .getElementById("editCategoryId")
+      .value
+      .trim();
+
+  const name =
+    document
+      .getElementById("categoryName")
+      .value
+      .trim();
+
+  const icon =
+    document
+      .getElementById("categoryIcon")
+      .value
+      .trim()
+      ||
+      "♡";
+
+  const layout =
+    document
+      .getElementById("categoryLayout")
+      .value;
+
+  const order =
+    Number(
+      document
+        .getElementById("categoryOrder")
+        .value
+      ||
+      0
+    );
+
+  if(!name){
+
+    alert("กรุณาใส่ชื่อหมวด");
+    return;
+
+  }
+
+  const data = {
+    name,
+    icon,
+    layout,
+    order,
+    updatedAt:serverTimestamp()
+  };
+
+  try{
+
+    if(id){
+
+      await updateDoc(
+        doc(db,"categories",id),
+        data
+      );
+
+    }else{
+
+      await addDoc(
+        collection(db,"categories"),
+        {
+          ...data,
+          createdAt:serverTimestamp()
+        }
+      );
+
+    }
+
+    clearCategoryForm();
+
+    alert(
+      id
+      ? "แก้ไขหมวดแล้ว ♡"
+      : "เพิ่มหมวดแล้ว ♡"
+    );
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("บันทึกหมวดไม่สำเร็จ");
+
+  }
+};
+
+function renderAdminCategories(){
+  const box =
+    document.getElementById("adminCategoryList");
+
+  if(!box) return;
+
+  const list =
+    categories.length
+    ? categories
+    : DEFAULT_CATEGORIES;
+
+  box.innerHTML =
+    list.map(cat=>`
+      <div class="admin-work">
+
+        <div class="admin-work-info">
+
+          <b>
+            ${escapeHTML(cat.icon||"♡")}
+            ${escapeHTML(cat.name||"ไม่มีชื่อ")}
+          </b>
+
+          <small>
+            ${cat.layout==="bottom" ? "แถบล่าง" : "ช่องบน"}
+            ·
+            ลำดับ ${Number(cat.order||0)}
+          </small>
+
+        </div>
+
+        <div class="admin-actions">
+
+          <button
+            class="mini edit"
+            onclick="editCategory('${escapeJs(cat.id)}')"
+          >
+            แก้
+          </button>
+
+          <button
+            class="mini danger"
+            onclick="deleteCategory('${escapeJs(cat.id)}')"
+          >
+            ลบ
+          </button>
+
+        </div>
+
+      </div>
+    `).join("");
+}
+
+window.editCategory = function(id){
+  const cat =
+    displayCategories()
+      .find(x=>x.id===id);
+
+  if(!cat) return;
+
+  document.getElementById("editCategoryId").value =
+    cat.id;
+
+  document.getElementById("categoryName").value =
+    cat.name||"";
+
+  document.getElementById("categoryIcon").value =
+    cat.icon||"♡";
+
+  document.getElementById("categoryLayout").value =
+    cat.layout||"top";
+
+  document.getElementById("categoryOrder").value =
+    Number(cat.order||0);
+
+  document.getElementById("categoryFormTitle").textContent =
+    "แก้ไขหมวดหมู่";
+
+  document.getElementById("cancelCategoryBtn")
+    .classList
+    .remove("hide");
+};
+
+window.cancelCategoryEdit = function(){
+  clearCategoryForm();
+};
+
+function clearCategoryForm(){
+  document.getElementById("editCategoryId").value = "";
+  document.getElementById("categoryName").value = "";
+  document.getElementById("categoryIcon").value = "";
+  document.getElementById("categoryLayout").value = "top";
+  document.getElementById("categoryOrder").value = "0";
+
+  document.getElementById("categoryFormTitle").textContent =
+    "เพิ่มหมวดหมู่";
+
+  document.getElementById("cancelCategoryBtn")
+    .classList
+    .add("hide");
+}
+
+window.deleteCategory = async function(id){
+  if(!requireAdmin()) return;
+
+  const cat =
+    categories.find(x=>x.id===id);
+
+  if(!cat){
+    alert("กำลังสร้างหมวดเริ่มต้นใน Firestore กรุณาลองอีกครั้ง");
+    await ensureDefaultCategories();
+    return;
+  }
+
+  const used =
+    works.some(
+      work=>work.category===id
+    );
+
+  if(used){
+
+    alert(
+      "หมวดนี้ยังมีงานอยู่ กรุณาย้ายหรือลบงานในหมวดนี้ก่อน"
+    );
+
+    return;
+  }
+
+  if(
+    !confirm(
+      `ลบหมวด "${cat.name}" ใช่ไหม?`
+    )
+  ) return;
+
+  try{
+
+    await deleteDoc(
+      doc(db,"categories",id)
+    );
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("ลบหมวดไม่สำเร็จ");
+
+  }
+};
+
+/* =========================================================
+   ADMIN QUEUE
+   ========================================================= */
+window.saveQueue = async function(){
+  if(!requireAdmin()) return;
+
+  const id =
+    document
+      .getElementById("editQueueId")
+      .value
+      .trim();
+
+  const customer =
+    document
+      .getElementById("queueCustomer")
+      .value
+      .trim();
+
+  const contact =
+    document
+      .getElementById("queueContact")
+      .value
+      .trim();
+
+  const work =
+    document
+      .getElementById("queueWork")
+      .value
+      .trim();
+
+  const status =
+    document
+      .getElementById("queueStatus")
+      .value;
+
+  const order =
+    Number(
+      document
+        .getElementById("queueOrder")
+        .value
+      ||
+      0
+    );
+
+  const note =
+    document
+      .getElementById("queueNote")
+      .value
+      .trim();
+
+  if(!customer){
+
+    alert("กรุณาใส่ชื่อลูกค้า");
+    return;
+
+  }
+
+  const data = {
+    customer,
+    contact,
+    work,
+    status,
+    order,
+    note,
+    updatedAt:serverTimestamp()
+  };
+
+  try{
+
+    if(id){
+
+      await updateDoc(
+        doc(db,"queues",id),
+        data
+      );
+
+    }else{
+
+      await addDoc(
+        collection(db,"queues"),
+        {
+          ...data,
+          createdAt:serverTimestamp()
+        }
+      );
+
+    }
+
+    clearQueueForm();
+
+    alert(
+      id
+      ? "แก้ไขคิวแล้ว ♡"
+      : "เพิ่มคิวแล้ว ♡"
+    );
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("บันทึกคิวไม่สำเร็จ");
+
+  }
+};
+
+function renderAdminQueues(){
+  const box =
+    document.getElementById("adminQueueList");
+
+  if(!box) return;
+
+  if(!queues.length){
+
+    box.innerHTML =
+      `<div style="font-size:9px;color:var(--muted);padding:5px 0">
+        ยังไม่มีคิว
+      </div>`;
+
+    return;
+  }
+
+  box.innerHTML =
+    queues.map(item=>`
+      <div class="admin-work">
+
+        <div class="admin-work-info">
+
+          <b>
+            #${Number(item.order||0)}
+            ·
+            ${escapeHTML(item.customer||"ไม่ระบุชื่อ")}
+          </b>
+
+          <small>
+            ${escapeHTML(item.work||"-")}
+            ·
+            ${escapeHTML(STATUS_TEXT[item.status]||item.status||"-")}
+          </small>
+
+        </div>
+
+        <div class="admin-actions">
+
+          <button
+            class="mini edit"
+            onclick="editQueue('${escapeJs(item.id)}')"
+          >
+            แก้
+          </button>
+
+          <button
+            class="mini danger"
+            onclick="deleteQueue('${escapeJs(item.id)}')"
+          >
+            ลบ
+          </button>
+
+        </div>
+
+      </div>
+    `).join("");
+}
+
+window.editQueue = function(id){
+  const item =
+    queues.find(x=>x.id===id);
+
+  if(!item) return;
+
+  document.getElementById("editQueueId").value =
+    item.id;
+
+  document.getElementById("queueCustomer").value =
+    item.customer||"";
+
+  document.getElementById("queueContact").value =
+    item.contact||"";
+
+  document.getElementById("queueWork").value =
+    item.work||"";
+
+  document.getElementById("queueStatus").value =
+    item.status||"waiting";
+
+  document.getElementById("queueOrder").value =
+    Number(item.order||1);
+
+  document.getElementById("queueNote").value =
+    item.note||"";
+
+  document.getElementById("queueFormTitle").textContent =
+    "แก้ไขคิว";
+
+  document.getElementById("cancelQueueBtn")
+    .classList
+    .remove("hide");
+};
+
+window.cancelQueueEdit = function(){
+  clearQueueForm();
+};
+
+function clearQueueForm(){
+  document.getElementById("editQueueId").value = "";
+  document.getElementById("queueCustomer").value = "";
+  document.getElementById("queueContact").value = "";
+  document.getElementById("queueWork").value = "";
+  document.getElementById("queueStatus").value = "waiting";
+  document.getElementById("queueOrder").value = "1";
+  document.getElementById("queueNote").value = "";
+
+  document.getElementById("queueFormTitle").textContent =
+    "เพิ่มคิว";
+
+  document.getElementById("cancelQueueBtn")
+    .classList
+    .add("hide");
+}
+
+window.deleteQueue = async function(id){
+  if(!requireAdmin()) return;
+
+  const item =
+    queues.find(x=>x.id===id);
+
+  if(!item) return;
+
+  if(
+    !confirm(
+      `ลบคิวของ "${item.customer}" ใช่ไหม?`
+    )
+  ) return;
+
+  try{
+
+    await deleteDoc(
+      doc(db,"queues",id)
+    );
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("ลบคิวไม่สำเร็จ");
+
+  }
+};
+
+/* =========================================================
+   ADMIN SITE + MUSIC
+   ========================================================= */
+function fillAdminSite(){
+  const headerValue = String(site.headerGif || "");
+  const profileValue = String(site.profileImage || "");
+  const qrValue = String(site.qr || "");
+
+  pendingHeaderImageData =
+    headerValue.startsWith("data:image/")
+      ? headerValue
+      : "";
+
+  pendingProfileImageData =
+    profileValue.startsWith("data:image/")
+      ? profileValue
+      : "";
+
+  pendingQRImageData =
+    qrValue.startsWith("data:image/")
+      ? qrValue
+      : "";
+
+  const data = {
+    settingShopName:site.shopName,
+    settingBio:site.bio,
+    settingHeaderGif:
+      pendingHeaderImageData ? "" : site.headerGif,
+    settingProfileImage:
+      pendingProfileImageData ? "" : site.profileImage,
+    settingMusic:site.musicUrl,
+    settingLineLink:site.lineLink,
+    settingInstagramLink:site.instagramLink,
+    settingFacebookLink:site.facebookLink,
+    settingQR:
+      pendingQRImageData ? "" : site.qr,
+    settingBank:site.bank,
+    settingAccountName:site.accountName,
+    settingAccountNumber:site.accountNumber,
+    settingPaymentNote:site.paymentNote
+  };
+
+  Object
+    .entries(data)
+    .forEach(([id,value])=>{
+
+      const el =
+        document.getElementById(id);
+
+      if(el){
+        el.value = value||"";
+      }
+
+    });
+
+  const headerFile = document.getElementById("headerImageFile");
+  const profileFile = document.getElementById("profileImageFile");
+  const qrFile = document.getElementById("qrImageFile");
+
+  if(headerFile) headerFile.value = "";
+  if(profileFile) profileFile.value = "";
+  if(qrFile) qrFile.value = "";
+
+  updateAdminPreview("headerImagePreview",headerValue);
+  updateAdminPreview("profileImagePreview",profileValue);
+  updateAdminPreview("qrImagePreview",qrValue);
+}
+
+window.saveSiteSettings = async function(){
+  if(!requireAdmin()) return;
+
+  const data = {
+    shopName:
+      document
+        .getElementById("settingShopName")
+        .value
+        .trim(),
+
+    bio:
+      document
+        .getElementById("settingBio")
+        .value
+        .trim(),
+
+    headerGif:
+      pendingHeaderImageData
+      ||
+      document
+        .getElementById("settingHeaderGif")
+        .value
+        .trim(),
+
+    profileImage:
+      pendingProfileImageData
+      ||
+      document
+        .getElementById("settingProfileImage")
+        .value
+        .trim(),
+
+    musicUrl:
+      document
+        .getElementById("settingMusic")
+        .value
+        .trim(),
+lineLink:
+      document
+        .getElementById("settingLineLink")
+        .value
+        .trim(),
+
+    instagramLink:
+      document
+        .getElementById("settingInstagramLink")
+        .value
+        .trim(),
+
+    facebookLink:
+      document
+        .getElementById("settingFacebookLink")
+        .value
+        .trim(),
+
+    updatedAt:
+      serverTimestamp()
+  };
+
+  try{
+
+    await setDoc(
+      doc(db,"site","main"),
+      data,
+      {merge:true}
+    );
+
+    alert("บันทึกหน้าเว็บแล้ว ♡");
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("บันทึกไม่สำเร็จ");
+
+  }
+};
+
+window.savePaymentSettings = async function(){
+  if(!requireAdmin()) return;
+
+  const data = {
+    qr:
+      pendingQRImageData
+      ||
+      document
+        .getElementById("settingQR")
+        .value
+        .trim(),
+
+    bank:
+      document
+        .getElementById("settingBank")
+        .value
+        .trim(),
+
+    accountName:
+      document
+        .getElementById("settingAccountName")
+        .value
+        .trim(),
+
+    accountNumber:
+      document
+        .getElementById("settingAccountNumber")
+        .value
+        .trim(),
+
+    paymentNote:
+      document
+        .getElementById("settingPaymentNote")
+        .value
+        .trim(),
+
+    updatedAt:
+      serverTimestamp()
+  };
+
+  try{
+
+    await setDoc(
+      doc(db,"site","main"),
+      data,
+      {merge:true}
+    );
+
+    alert("บันทึกข้อมูลการชำระเงินแล้ว ♡");
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("บันทึกไม่สำเร็จ");
+
+  }
+};
+
+/* =========================================================
+   7 THEMES
+   ========================================================= */
+window.previewTheme = function(theme){
+  previewThemeValue = theme;
+  document.body.dataset.theme = theme;
+  markThemeButtons();
+};
+
+function markThemeButtons(){
+  document
+    .querySelectorAll("[data-theme-choice]")
+    .forEach(btn=>{
+
+      btn.classList.toggle(
+        "selected",
+        btn.dataset.themeChoice===previewThemeValue
+      );
+
+    });
+}
+
+window.saveTheme = async function(){
+  if(!requireAdmin()) return;
+
+  try{
+
+    await setDoc(
+      doc(db,"site","main"),
+      {
+        theme:previewThemeValue,
+        updatedAt:serverTimestamp()
+      },
+      {merge:true}
+    );
+
+    alert("บันทึกธีมแล้ว ♡");
+
+  }catch(err){
+
+    console.error(err);
+
+    alert("บันทึกธีมไม่สำเร็จ");
+
+  }
+};
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+function money(value){
+  const n = Number(value||0);
+
+  return Number.isFinite(n)
+    ? n.toLocaleString("th-TH")
+    : "0";
+}
+
+function escapeHTML(value){
+  return String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function escapeAttr(value){
+  return escapeHTML(value);
+}
+
+function escapeJs(value){
+  return String(value??"")
+    .replaceAll("\\","\\\\")
+    .replaceAll("'","\\'");
+}
+
+/* =========================================================
+   FIRST RENDER
+   ========================================================= */
+applySite();
+renderCategories();
+renderOtherCategories();
+fillWorkCategoryOptions();
+renderWorks();
+renderOtherWorks();
+renderCart();
+renderQueues();
+</script>
+
+</body>
+</html>
